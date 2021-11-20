@@ -16,7 +16,7 @@ sqlite3
 
 Als je nu de sqlite3-prompt te zien krijgt, kan je verder!
 
-````
+```
 SQLite version 3.37.0 2021-09-28 10:44:54
 Enter ".help" for usage hints.
 Connected to a transient in-memory database.
