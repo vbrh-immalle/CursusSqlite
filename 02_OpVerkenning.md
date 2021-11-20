@@ -281,7 +281,7 @@ Je ziet volgende helptekst:
 .separator COL ?ROW?     Change the column and row separators
 ```
 
-Hiermee kunnen we zoveel tussen de **kolommen** als tussen de **rijen** een ander scheidingsteken kiezen. Het scheidingstekens voor nieuwe rijen laten we best op *een nieuwe regel* staan. (De vraagtekens van `?ROW?` in de helptekst betekenen dat dit een optioneel argument voor het `.separator`-commando is.)
+Hiermee kunnen we zowel tussen de **kolommen** als tussen de **rijen** een ander scheidingsteken kiezen. Het scheidingstekens voor nieuwe rijen laten we best op *een nieuwe regel* staan. (De vraagtekens van `?ROW?` in de helptekst betekenen dat dit een optioneel argument voor het `.separator`-commando is.)
 
 Wij hebben dus voldoende aan enkel het instellen van het kolom-scheidingsteken: `COL` (en we geven dus niets mee voor `?ROW?`):
 
@@ -391,7 +391,7 @@ De uitvoer ziet er hetzelfde uit als met de vorige query (in het geval van `.mod
 +-------+-----+
 ```
 
-Nu kunnen we pas de kolomnamen anders weergeven, b.v. voor een Nederlandse vertaling). We gebruiken het SQL-sleutelwoord `AS`:
+Nu kunnen we pas de kolomnamen anders weergeven, b.v. voor een Nederlandse vertaling. We gebruiken het SQL-sleutelwoord `AS`:
 
 ```
 SELECT Name AS Naam, Age AS Leeftijd FROM Student;
@@ -409,7 +409,7 @@ Zo zou dit er uit moeten zien:
 ```
 
 > Merk op dat de kolomnamen v.d. oorspronkelijk tabel **niet** veranderd zijn! Dit kan je controleren door opnieuw `SELECT * FROM Student;` uit te voeren.
-> We zouden dit *kunnen* doen met de `ALTER TABLE`-opdracht maar deze SQL-opdracht zullen we in deze cursus niet gebruiken. Dat zou bovendien strijdig zijn met ons principe dat we het design van de database ook toegankelijk willen maken voor anderstalige ontwikkelaars. (Dee gegevens in de rijen kunnen natuurlijk wel gewoon in het Nederlands.)
+> We zouden dit *kunnen* doen met de `ALTER TABLE`-opdracht maar deze SQL-opdracht zullen we in deze cursus niet gebruiken. Dat zou bovendien strijdig zijn met ons principe dat we het design van de database ook toegankelijk willen maken voor anderstalige ontwikkelaars. (De gegevens in de rijen kunnen natuurlijk wel gewoon in het Nederlands.)
 
 ## Oefening 02.09: Over schema's en de TAB-toets
 
@@ -455,9 +455,11 @@ Zo kan je dus misschien sneller deze query typen:
 SELECT Name FROM Student ;
 ```
 
-Als je `<TAB>` drukt en er zijn nog meerdere mogelijkheden, zal getoond worden welke mogelijkheden en moet je nog wat verder typen. B.v.
+Als je `<TAB>` drukt en er niet ondubbelzinnig kan vastgesteld worden wat je bedoelt, zal je een piepsignaal horen. Als je vervolgens nogmaals op `<TAB>` drukt, zal getoond worden welke mogelijkheden er allemaal zijn en kan je dus aflezen wat je nog verder moet typen. B.v.
 
-- `S<TAB><TAB>` (je nog kiezen uit o.a. `SELECT`, `SET`, `Student` dus type verder en druk weer TAB tot je bent waar je moet zijn)
+- `S<TAB><TAB>` (je nog kiezen uit o.a. `SELECT`, `SET`, `Student` dus type verder en druk weer TAB tot je het woord hebt dat je moet hebben)
+
+> TIP: Je hoeft je niet te beperken tot 1 terminal! Je kan `sqlite3` in 2 verschillende vensters openen en 1 venster gebruiken om dingen op te zoeken en het andere om je queries te testen!
 
 ## Oefening 02.10: Tabellen verwijderen (en weer opnieuw creëren)
 
@@ -497,7 +499,7 @@ Tabellen verwijderen kan met `DROP TABLE`.
 
 Verwijder de tabel `Student`:
 
-````
+```
 DROP TABLE Student;
 ```
 
@@ -524,5 +526,61 @@ Het eindresultaat zal altijd zijn dat de ganse tabel (en alle gegevens!) verwijd
 
 > Voorlopig spelen we nog in de **transient in-memory database** ("zandbak") dus zouden alle tabellen ook weg zijn als we `.quit`'n (en `sqlite3` opnieuw opstarten).
 
-> Je moet de `CREATE TABLE`- en `DROP TABLE`-commando's niet zelf kunnen schrijven maar je zal ze wel tegenkomen in opgaves of `.sql`-scripts dus is het belangrijk dat je begrijpt wat er gebeurt.
+> Je moet de `CREATE TABLE`- en `DROP TABLE`-commando's niet zelf kunnen schrijven maar je zal ze wel tegenkomen in opgaves of `.sql`-scripts dus is het belangrijk dat je begrijpt wat er gebeurt:
+> - `DROP TABLE IF EXISTS Student` verwijdert de ganse tabel, dus zowel de schema-definitie als alle rijen
+> - `CREATE TABLE IF NOT EXISTS` laat een bestaande tabel gewoon staan en deze zal dus de bestaande data blijven behouden
 
+## Oefening 02.11: Kolommen meerdere keren gebruiken
+
+Om dit hoofdstuk af te sluiten, willen we je blik op wat SQL kan nog even verruimen.
+
+Wat denk je b.v. van deze query?
+
+```
+SELECT Name      AS Naam,
+       Age       AS Leeftijd,
+       100 - Age AS 'Hoeveel jaar tot 100?'
+  FROM Student;
+```
+
+Copy/paste deze code in de voorgaande database om uit te proberen!
+
+> Merk op dat het eigenlijk geen goed idee is om een leeftijd op te slaan als een vast getal. (Dit verandert namelijk elk jaar!)
+> We zullen in volgende hoofdstukken **datums** en **tijdstippen** tegenkomen.
+
+Enkele vaststellingen:
+
+- het query-resultaat heeft 3 kolommen terwijl de oorspronkelijke tabel maar 2 kolommen heeft
+   - We gebruiken de kolom `Age` 2 keer!
+- een kolomnaam met spaties KAN als we `'` gebruiken (maar is meestal niet zo'n goed idee)
+
+# Conclusie
+
+Je hebt in dit hoofdstuk kennis gemaakt met de `sqlite3`-tool.
+
+Je weet dat `sqlite3` vanaf Powershell (`PS>`-prompt) kan opstarten:
+
+- `sqlite3` start een nieuwe sqlite-sessie met een database in het RAM-geheugen
+- `sqlite3 -help` toont je een overzicht van alle mogelijke argumenten (waarvan we er enkele zullen gebruiken in het volgende hoofdstuk)
+
+Je kent ook een aantal nuttige dot-commando's:
+
+- `.help` toont je alle dot-commando's met een uitleg
+- `.help mode` geeft je alleen de uitleg van het `.mode`-commando
+- `.mode box` en `.mode table` maken de uitvoer duidelijker leesbaar en tonen kolomnamen
+- `.mode csv` en `.header on` zorgt voor CSV-output met hoofdingen
+- `.quit` verlaat `sqlite3`
+
+Je weet nu ook dat bepaalde toetsen(combinaties) (zoals `TAB` of de pijltjestoetsen) nuttig zijn bij het ingeven van nieuwe commando's of het bewerken van eerdere commando's.
+
+Je hebt enkele SQL-commando's tegengekomen:
+
+- `SELECT ... FROM ...;`
+- `SELECT ... AS ...;` 
+- `CREATE TABLE`
+- `DROP TABLE`
+- `INSERT INTO ...` (om rijen toe te voegen aan een tabel)
+
+> Merk op dat je enkel de `SELECT`-queries zelf moet leren schrijven.
+> Overige SQL-commando's mag je steeds opzoeken of hoef je enkel aan te passen.
+> Voor de dot-commando's kan je natuurlijk altijd `.help` raadplegen!
