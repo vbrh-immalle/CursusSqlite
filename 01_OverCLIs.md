@@ -3,7 +3,7 @@
 In deze cursus moeten we goed onderscheid maken tussen:
 
 - de Powershell-prompt (`PS>`)
-- de prompt van sqlite zelf (`sqlite>`)
+- de prompt van sqlite zelf (`sqlite>` en soms `   ...>`)
 
 ## Powershell-prompt
 
@@ -23,7 +23,7 @@ Wanneer de terminal `sqlite>` als prompt toont, zitten we in de interactieve she
 sqlite>
 ```
 
-Je kan hier nu commando's geven, zoals:
+Je kan hier nu dot-commando's geven, zoals:
 
 ```
 .help
@@ -46,4 +46,4 @@ Probeer dit in `PS>`:
     sqlite3 --help
 ```
 
-We zullen later enkele argumenten gebruiken om `.sqlite3`-bestanden of `.sql`-scripts te openen!
+We zullen later enkele argumenten gebruiken om meteen bij het opstarten al `.sqlite3`-bestanden of `.sql`-scripts te openen!

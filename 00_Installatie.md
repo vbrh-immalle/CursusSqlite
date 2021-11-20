@@ -25,7 +25,7 @@ Use ".open FILENAME" to reopen on a persistent database.
 
 Om terug naar de shell te gaan, type `.quit` of `.exit`.
 
-> Hier zie je we blijkbaar versie 3.37.0 gebruiken en hoe dat we verbonden zijn met een **in-memory database**. Dat wil zeggen dat we niet verbonden zijn met een database op schijf.
+> Hier zie je dat we blijkbaar versie 3.37.0 gebruiken en dat we momenteel "verbonden" zijn met een **in-memory database**. Dat wil zeggen dat alles wat we doen niet zal  worden opgeslagen (niet **persistent** zal zijn) omdat we niet verbonden zijn met een database-bestand op schijf. We kunnen hier dus rustig in "spelen" zoals in een *zandbak*, zonder verdere gevolgen.
 
 
 ## Windows / Powershell
