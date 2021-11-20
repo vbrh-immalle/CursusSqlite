@@ -340,9 +340,9 @@ Wanneer we nu deze query uitvoeren, zien we de 2 rijen!
 SELECT * FROM Student;
 ```
 
-We hebben nu dus een databank met 1 tabel `Student`. De tabel heeft 2 kolommen: `Name` van type `TEXT` en `Age` van `INTEGER`. De tabel heeft 2 rijen (of *records*), nl 2 leerlingen: Joske en Mieke.
+We hebben nu dus een databank met 1 tabel `Student`. De tabel heeft 2 kolommen: `Name` van type `TEXT` en `Age` van type `INTEGER`. De tabel heeft 2 rijen (of *records*), nl 2 leerlingen: *Joske* en *Mieke*.
 
-Deze databank zit nu in het RAM-geheugen (de *transient in-memory database* die `sqlite3` bij het opstarten vermeldt). Als we `sqlite3` zijn we de gegevens (en het *schema*) dus weer kwijt! We zullen in het volgende hoofdstuk zien hoe we kunnen werken met bestaande databases op schijf (*persistent databases*).
+Deze databank zit nu in het RAM-geheugen (de *transient in-memory database* die `sqlite3` bij het opstarten vermeldt). Als we `sqlite3` afsluiten, zijn we de gegevens (en het *schema*) dus weer kwijt! We zullen in het volgende hoofdstuk zien hoe we kunnen werken met databases op schijf (*persistent databases*).
 
 ## Oefening 02.08: Kolommen hernoemen met SELECT ... AS ...
 
@@ -407,6 +407,9 @@ Je kan ook het schema van de ganse database opvragen maar dat zal nu hetzelfde g
 ```
 .schema
 ```
+
+> Eigenlijk zijn deze "schema's" gewoon de `CREATE TABLE`-code die we eerder ingaven.
+> Hierin kunnen we de kolomnamen aflezen!
 
 Denk er aan dat je alle tabellen kan opvragen met
 
