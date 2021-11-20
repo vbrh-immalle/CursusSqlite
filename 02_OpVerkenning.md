@@ -148,7 +148,7 @@ hallo daar!
 
 In je line-history staan nu immers 3 verschillende regels dus let hiermee op als je naar een eerdere multi-line-query terug gaat!
 
-> Omdat de geschiedenis iets moeilijker is om mee te werken bij multi-line queries, zal je waarschijnlijk meestal query's uittesten op 1 regel. Pas als de query 'klaar' is, zal je deze opslaan in een `.sql`-bestand en voor de code een mooiere syntax op verschillendde regels gebruiken. (Zie later als je `.sql`-scripts zult aanmaken en uitvoeren!)
+> Omdat de geschiedenis iets moeilijker is om mee te werken bij multi-line queries, zal je waarschijnlijk meestal query's uittesten op 1 regel. Pas als de query 'klaar' is, zal je deze opslaan in een `.sql`-bestand en voor de code een mooiere syntax op verschillende regels gebruiken. (Zie later als je `.sql`-scripts zult aanmaken en uitvoeren!)
 
 ## Oefening 02.05: Mooiere uitvoer van query-resultaten
 
@@ -351,7 +351,7 @@ We hebben nu dus:
 - een databank met 1 tabel: `Student`
 - de tabel `Student` heeft 2 kolommen:
     - `Name` van type `TEXT`
-   `Age` van type `INTEGER`
+    - `Age` van type `INTEGER`
 - de tabel heeft 2 rijen (of *records*), nl de 2 leerlingen: *Joske* en *Mieke*
 
 Deze databank zit nu in het RAM-geheugen (de *transient in-memory database* die `sqlite3` bij het opstarten vermeldt). Als we `sqlite3` afsluiten, zijn we de gegevens (en het *schema*) dus weer kwijt!
