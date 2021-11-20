@@ -558,7 +558,7 @@ Enkele vaststellingen:
 
 Je hebt in dit hoofdstuk kennis gemaakt met de `sqlite3`-tool.
 
-Je weet dat `sqlite3` vanaf Powershell (`PS>`-prompt) kan opstarten:
+Je weet dat je `sqlite3` vanaf Powershell (`PS>`-prompt) kan opstarten:
 
 - `sqlite3` start een nieuwe sqlite-sessie met een database in het RAM-geheugen
 - `sqlite3 -help` toont je een overzicht van alle mogelijke argumenten (waarvan we er enkele zullen gebruiken in het volgende hoofdstuk)
@@ -569,9 +569,12 @@ Je kent ook een aantal nuttige dot-commando's:
 - `.help mode` geeft je alleen de uitleg van het `.mode`-commando
 - `.mode box` en `.mode table` maken de uitvoer duidelijker leesbaar en tonen kolomnamen
 - `.mode csv` en `.header on` zorgt voor CSV-output met hoofdingen
+- `.tables` geeft een lijstje van alle aanwezige tabellen
+- `.schema` geeft de `CREATE TABLE`-statements van **alle** tabellen
+- `.schema Student` geeft het `CREATE TABLE`-statement v.d. tabel `Student`
 - `.quit` verlaat `sqlite3`
 
-Je weet nu ook dat bepaalde toetsen(combinaties) (zoals `TAB` of de pijltjestoetsen) nuttig zijn bij het ingeven van nieuwe commando's of het bewerken van eerdere commando's.
+Je weet dat bepaalde toetsen(combinaties) (zoals `TAB` of de pijltjestoetsen) nuttig zijn bij het ingeven van nieuwe commando's of het bewerken van eerdere commando's.
 
 Je hebt enkele SQL-commando's tegengekomen:
 
