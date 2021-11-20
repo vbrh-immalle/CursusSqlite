@@ -25,7 +25,12 @@ Al deze implementaties zijn database-**servers**. Het zijn server-applicaties wa
 - punten v.d. rapporten van leerlingen (b.v. in de databases van Smartschool)
 - ...
 
-Een database-**server** heeft eigenlijk enkel zin als de applicatie door meerdere gebruikers tegelijkertijd gebruikt wordt (zoals bij web-applicaties).
+Een database-**server** heeft eigenlijk enkel zin als de applicatie door zeer veel gebruikers gelijktijdig gebruikt wordt (zoals bij web-applicaties).
+
+De voordelen van het gebruik van een database t.o.v. eigen code zijn o.a. :
+
+- *concurrency*-problemen zijn veel beter beheersbaar. Dit zijn het soort problemen die optreden als meerdere gebruikers gelijktijdig wijzigen aanbrengen aan dezelfde gegevens.
+- door gebruik te maken van zogenaamde *index*'n, kunnen database snel zoeken in grote hoeveelheden informatie. Wanneer queries niet performant genoeg zijn, kunnen de zoekalgoritmes en de indexen in de database aangepast worden, zonder dat de applicatie daarvoor moet gewijzigd worden
 
 # SQLite
 
@@ -40,12 +45,12 @@ Voorbeelden:
 - SMS- en contactgegevens in Android en iOS
 - ...
 
-Je kan als applicatie-ontwikkelaar de SQLite-bibliotheek aan je project toevoegen. Dit is meestal makkelijker dan om zelf manieren te bedenken om informatie (even betrouwbaar) op de lokale schijf v.d. 
+Je kan als applicatie-ontwikkelaar de SQLite-bibliotheek aan je project toevoegen. Dit is meestal makkelijker dan zelf manieren te bedenken om informatie (even betrouwbaar) op de lokale schijf v.d. 
 gebruiker op te slaan.
 
-> Zie b.v. https://sqlite.org/fasterthanfs.html waar uitgelegd wordt hoe SQLite gebruiken meestal performanter is dat zelf bestanden op schijf te beheren.
+> Zie b.v. https://sqlite.org/fasterthanfs.html waar uitgelegd wordt hoe SQLite gebruiken meestal performanter is dan zelf bestanden op schijf te beheren.
 
-Op https://github.com/vbrh-immalle/DotnetSqliter kan je zelf een simpel voorbeeld uittesten van een C#-applicatie die een SQLite-database gebruikt.
+Op https://github.com/vbrh-immalle/DotnetSqliter kan je een simpel voorbeeld uittesten van een C#-applicatie die een SQLite-database gebruikt.
 
 > Voor kleinere server-applicaties (b.v. minder dan 1000 gelijktijdige gebruikers) is SQLite soms meer dan voldoende. SQLite *kan* dus ook in een server-applicatie gebruikt worden maar het bevat zelf geen netwerk-server en slechts 1 (server-)applicatie kan gelijktijdig schrijven naar het sqlite-bestand.
 
