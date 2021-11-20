@@ -15,7 +15,7 @@ PS C:\>
 
 ## SQLite-prompt
 
-`sqlite3` is namelijk een **interactief** CLI-tooltje. Dit wil zeggen dat het de gewone shell overneemt en we er rechtstreeks commando's aan kunnen geven.
+`sqlite3` is een **interactief** CLI-tooltje. Dit wil zeggen dat het de gewone shell overneemt en we er rechtstreeks commando's aan kunnen geven.
 
 Wanneer de terminal `sqlite>` als prompt toont, zitten we in de interactieve shell van sqlite zelf!
 
@@ -31,6 +31,12 @@ Je kan hier nu dot-commando's geven, zoals:
 .tables
 .dump
 ```
+
+Soms toont de prompt `   ...>`. Later meer hierover.
+
+Als **noodoplossing** kunnen we met `CTRL-C` (Cancel/Abort) steeds proberen om terug in Powershell te geraken.
+
+> Om Copy/Paste te gebruiken in b.v. Windows Terminal, moet je standaard `CTRL+SHIFT+C` en `+V` gebruiken!
 
 # CLI-Programma's en argumenten
 
