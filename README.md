@@ -1,3 +1,3 @@
 # CursusSqlite
 
-Begin bij [00_Installatie.md]().
+Begin bij `00_Installatie.md`.
