@@ -392,6 +392,9 @@ Nu zijn de kolomnamen in het Nederlands:
 +-------+----------+
 ```
 
+> Merk op dat de kolomnamen v.d. oorspronkelijk tabel **niet** veranderd zijn! Dit kan je controleren door opnieuw `SELECT * FROM Student;` uit te voeren.
+> We zouden dit *kunnen* doen met de `ALTER TABLE`-opdracht maar deze SQL-opdracht zullen we in deze cursus niet gebruiken.
+
 ## Oefening 02.09: Over schema's en de TAB-toets
 
 Wanneer we kolomnamen moeten opgeven achter `SELECT`, is het wel zo handig als we de kolomnamen kunnen zien zodat we weten wat te typen.
