@@ -72,7 +72,6 @@ Je krijg dus pas de `sqlite>`-prompt terug als je een **query** hebt afgesloten 
 Wat gebeurt er als je **onzin** typt (of fouten maakt tegen de syntax van SQL)?
 
    sqlite> blabla
-   blabla
       ...> 534
       ...> xyz
       ...> oeioei;
@@ -81,9 +80,11 @@ Wat gebeurt er als je **onzin** typt (of fouten maakt tegen de syntax van SQL)?
 
 Dan krijg je letterlijk een **syntax error** die je pas te zien krijgt als je `;` hebt getypt!
 
+> Let dus steeds of de prompt `sqlite>` of `   ...>` bevat. De laatste prompt betekent dat er meer invoer verwacht wordt. De query wordt pas uitgevoerd na de `;`.
+
 ## Oefening 02.03: nog enkele SELECT-queries
 
-Geef volgende queries in die verschillende types van waarden teruggeven en zelfs berekeningen doen!
+Probeer deze queries. Ze geven verschillende *types* (`int`, `string`, ...) van waardes terug. Sommige van deze queries doen zelfs een berekening!
 
 In `sqlite>`:
 
@@ -96,7 +97,7 @@ SELECT 5 + 3;
 SELECT 2 * 3;
 SELECT 8 / 2;
 SELECT 8 / 2.0;
-SELECT "hallo" || " joske";
+SELECT 'hallo' || ' joske';
 ```
 
 Je kan een aantal dingen vaststellen over SQLite, nl.
@@ -118,9 +119,9 @@ SELECT 3 + 5;
 
 Je krijgt het antwoord (`8`) te zien.
 
-Druk nu op de pijltjestoets naar boven. Vervolgens kan je met de pijltjestoetsen links en rechts de regel code bewerken en met `ENTER` weer uitvoeren.
+Druk nu op de **pijltjestoets naar boven**. Vervolgens kan je met de pijltjestoetsen links en rechts de regel code bewerken en met `ENTER` weer uitvoeren.
 
-Probeer volgende snelkoppelingen tijdens het bewerken van een eerdere regel:
+Probeer volgende snelkoppelingen tijdens het bewerken van een regel:
 
 - `HOME` of `CTRL-A` om naar het begin v.d. regel te gaan
 - `END` of `CTRL-E` om naar het einde v.d. regel te gaan
@@ -137,7 +138,9 @@ Let wel op als je eerder **multi-line** queries hebt ingegeven! B.v.
       ...> ;
    hallo daar!
 
-In je line-history staan nu immers 3 verschillende regels dus je moet zeker terug naar het begin v.d. query gaan!
+In je line-history staan nu immers 3 verschillende regels dus let hiermee op als je naar een eerdere multi-line-query terug gaat!
+
+> Omdat de geschiedenis iets moeilijker is om mee te werken bij multi-line queries, zal je waarschijnlijk meestal query's uittesten op 1 regel en pas als de query 'klaar' is, deze opslaan met een mooiere syntax op verschillendde regels. Zie later als we `.sql`-bestanden gaan gebruiken!
 
 ## Oefening 02.05: Mooiere uitvoer van query-resultaten
 
@@ -192,6 +195,7 @@ De uitvoer zou er nu zo uit moeten zien:
    +-------+----------+
    sqlite>
 
+> Merk op dat de **dot-commando's** **GEEN** `;` op het einde hebben. Enkel SQL-code moet je afsluiten met een `;`.
 
 ## Oefening 02.06: CSV-uitvoer met of zonder headers
 
