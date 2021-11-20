@@ -344,5 +344,161 @@ We hebben nu dus een databank met 1 tabel `Student`. De tabel heeft 2 kolommen: 
 
 Deze databank zit nu in het RAM-geheugen (de *transient in-memory database* die `sqlite3` bij het opstarten vermeldt). Als we `sqlite3` zijn we de gegevens (en het *schema*) dus weer kwijt! We zullen in het volgende hoofdstuk zien hoe we kunnen werken met bestaande databases op schijf (*persistent databases*).
 
+## Oefening 02.08: Kolommen hernoemen met SELECT ... AS ...
 
+In deze cursus gebruiken we voor tabel- en kolomnamen steeds Engelse woorden.
+
+> Het idee hierachter is dat onze code misschien door internationale programmeurs zal moeten worden aangepast.
+
+Stel dat we gegevens uit de databank willen opvragen voor Nederlandstalige klanten. Het kan dan interessant zijn om de kolomnamen te vertalen.
+
+Eerst moeten we elke kolom van de tabel expliciet opvragen i.p.v. het jokerteken (wildcard) `*` te gebruiken.
+
+```
+SELECT * FROM Student;
+```
+
+wordt dus
+
+```
+SELECT Name, Age FROM Student;
+```
+
+De uitvoer ziet er hetzelfde uit als met de vorige query (in het geval van `.mode table`):
+
+```
++-------+-----+
+| Name  | Age |
++-------+-----+
+| Joske | 16  |
+| Mieke | 15  |
++-------+-----+
+```
+
+Nu kunnen we de kolomnamen veranderen (b.v. een Nederlandse vertaling) met `AS`:
+
+```
+SELECT Name AS Naam, Age AS Leeftijd FROM Student;
+```
+
+Nu zijn de kolomnamen in het Nederlands:
+
+```
++-------+----------+
+| Naam  | Leeftijd |
++-------+----------+
+| Joske | 16       |
+| Mieke | 15       |
++-------+----------+
+```
+
+## Oefening 02.09: Over schema's en de TAB-toets
+
+Wanneer we kolomnamen moeten opgeven achter `SELECT`, is het wel zo handig als we de kolomnamen kunnen zien zodat we weten wat te typen.
+
+Met dit commando krijg je het **schema** van de tabel `Student` te zien:
+
+```
+.schema Student
+```
+
+Je kan ook het schema van de ganse database opvragen maar dat zal nu hetzelfde geven aangezien we maar 1 tabel hebben.
+
+```
+.schema
+```
+
+Denk er aan dat je alle tabellen kan opvragen met
+
+```
+.tables
+```
+
+> Met het `.schema`-commando kunnen we dus kolomnamen opzoeken voor we een query beginnen typen!
+
+De `sqlite3`-tool ondersteunt ook de `<TAB>`-toets. Op elk moment kan je op `<TAB>` drukken en dan zal je enkele mogelijke aanvullingen voorgesteld krijgen. Er wordt hiervoor ook gezocht in alle kolomnamen van alle tabellen dus dit kan ook een goede hulp zijn!
+
+Probeer volgende zaken te typen:
+
+- `SEL<TAB>` (dit wordt aangevuld naar `SELECT`, tenzij je zelf iets gedefinieerd hebt dat met `SEL` begint)
+- `SELECT Nam<TAB>` (dit wordt aangevuld naar `Name` omdat deze kolom ontdekt is in de `Student`-tabel)
+- `SELECT Name FR<TAB>` (dit wordt aangevuld met `FROM` omdat dit ook een bekend SQL-woord is)
+- `SELECT NAME FROM St<TAB>` (dit wordt aangevuld met `Student` omdat deze tabelnaam bekend is)
+
+Zo kan je dus misschien sneller deze query typen:
+
+```
+SELECT Name FROM Student ;
+```
+
+Als je `<TAB>` drukt en er zijn nog meerdere mogelijkheden, zal getoond worden welke mogelijkheden en moet je nog wat verder typen. B.v.
+
+- `S<TAB><TAB>` (je nog kiezen uit o.a. `SELECT`, `SET`, `Student` dus type verder en druk weer TAB tot je bent waar je moet zijn)
+
+## Oefening 02.10: Tabellen verwijderen (en weer opnieuw creëren)
+
+Toon alle aanwezige tabellen:
+
+```
+.tables
+```
+
+Zelfs als de tabel `Student` al bestaat, kan je proberen deze opnieuw te maken:
+
+```
+CREATE TABLE Student(
+   Name TEXT,
+   Age INTEGER
+);
+```
+
+Je krijgt dan de foutmelding:
+
+```
+Error: table Student already exists
+```
+
+In `.sql`-scripts zullen we daarom soms `IF NOT EXISTS` toevoegen aan `CREATE TABLE`.
+
+Deze code zou je meerdere keren achter elkaar moeten kunnen uitvoeren zonder foutmeldingen of data-verlies:
+
+```
+CREATE TABLE IF NOT EXISTS Student(
+   Name TEXT,
+   Age INTEGER
+);
+```
+
+Tabellen verwijderen kan met `DROP TABLE`.
+
+Verwijder de tabel `Student`:
+
+````
+DROP TABLE Student;
+```
+
+Controleer of de tabel echt weg is:
+
+```
+.tables
+```
+
+Als je dit nogmaals probeert te doen, krijg je deze foutmelding:
+
+```
+Error: no such table: Student
+```
+
+Daarom kunnen we ook hier iets toevoegen: `IF EXISTS`.
+
+```
+DROP TABLE IF EXISTS Student;
+```
+
+Deze code kan je opnieuw meerdere malen uitvoeren zonder foutmeldingen te krijgen.
+Het eindresultaat zal altijd zijn dat de ganse tabel (en alle gegevens!) verwijderd zijn.
+
+> Voorlopig spelen we nog in de **transient in-memory database** ("zandbak") dus zouden alle tabellen ook weg zijn als we `.quit`'n (en `sqlite3` opnieuw opstarten).
+
+> Je moet de `CREATE TABLE`- en `DROP TABLE`-commando's niet zelf kunnen schrijven maar je zal ze wel tegenkomen in opgaves of `.sql`-scripts dus is het belangrijk dat je begrijpt wat er gebeurt.
 
