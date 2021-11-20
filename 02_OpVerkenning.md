@@ -52,11 +52,11 @@ Dit wil zeggen dat er op meer input wordt gewacht. Je kan dan alsnog de `;` type
 
 Wat gebeurt er als je het volgende doet:
 
-- type `select` + <enter>
-- type nogmaals <enter>
-- type `3` + <enter>
-- druk nogmaals 2 keer op <enter>
-- type `;` + <enter>
+- type `select` + `<enter>`
+- type nogmaals `<enter>`
+- type `3` + `<enter>`
+- druk nogmaals 2 keer op `<enter>`
+- type `;` + `<enter>`
 
 en je ziet waarschijnlijk:
 
@@ -86,7 +86,7 @@ sqlite>
 
 Dan krijg je letterlijk een **syntax error** die je pas te zien krijgt als je `;` hebt getypt!
 
-> Let dus steeds of de prompt `sqlite>` of `   ...>` bevat. De laatste prompt betekent dat er meer invoer verwacht wordt. De query wordt pas uitgevoerd na de `;`.
+> Let er dus steeds op of de prompt `sqlite>` of `   ...>` bevat. De laatste prompt betekent dat er meer invoer verwacht wordt. De query wordt pas uitgevoerd na de `;`.
 
 ## Oefening 02.03: nog enkele SELECT-queries
 
@@ -109,9 +109,9 @@ SELECT 'hallo' || ' joske';
 Je kan een aantal dingen vaststellen over SQLite, nl.
 
 - de symbolen voor optellen (`+`), vermenigvuldigen (`*`) en delen (`/`)
-- het symbool om 2 strings aan elkaar te plakken is `||`
+- het symbool om 2 strings aan elkaar te plakken (`||`)
 - strings mogen zowel single (`'`) als double (`"`) quotes gebruiken (verkies echter single quotes voor compatibiliteit met andere SQL-implementaties)
-- wanneer 1 van 2 getallen in een wiskundige operatie een komma-getal is, is het resultaat ook een komma-getal
+- wanneer 1 van de 2 getallen in een wiskundige operatie een komma-getal is, is het resultaat ook een komma-getal
 
 ## Oefening 02.04: door de history scrollen
 
@@ -139,14 +139,16 @@ Probeer volgende snelkoppelingen tijdens het bewerken van een regel:
 
 Let wel op als je eerder **multi-line** queries hebt ingegeven! B.v.
 
-   sqlite> SELECT "hallo"
-      ...> || " daar!"
-      ...> ;
-   hallo daar!
+```
+sqlite> SELECT "hallo"
+...> || " daar!"
+...> ;
+hallo daar!
+```
 
 In je line-history staan nu immers 3 verschillende regels dus let hiermee op als je naar een eerdere multi-line-query terug gaat!
 
-> Omdat de geschiedenis iets moeilijker is om mee te werken bij multi-line queries, zal je waarschijnlijk meestal query's uittesten op 1 regel en pas als de query 'klaar' is, deze opslaan met een mooiere syntax op verschillendde regels. Zie later als we `.sql`-bestanden gaan gebruiken!
+> Omdat de geschiedenis iets moeilijker is om mee te werken bij multi-line queries, zal je waarschijnlijk meestal query's uittesten op 1 regel. Pas als de query 'klaar' is, zal je deze opslaan in een `.sql`-bestand en voor de code een mooiere syntax op verschillendde regels gebruiken. (Zie later als je `.sql`-scripts zult aanmaken en uitvoeren!)
 
 ## Oefening 02.05: Mooiere uitvoer van query-resultaten
 
@@ -164,7 +166,7 @@ Joske|16
 
 Dit kunnen we mooier maken.
 
-> Deze uitvoer stelt eigenlijk een tabel voor met 2 kolommen (`Naam` en `Leeftijd`) en 1 rij gegevens. Later zullen we nog veel resultaten van queries in tabellen weergeven! Daarom willen we de uitvoer nu zo duidelijk mogelijk maken.
+> Deze uitvoer stelt eigenlijk een tabel voor met 2 kolommen (`Naam` en `Leeftijd`) en 1 rij gegevens. Later zullen we nog veel resultaten van queries in tabelvorm weergeven! Daarom wil je nu eerst even oefenen en experimenteren met de verschillende manieren om de resultaten van queries op verschillende manieren weer te geven.
 
 Met dot-commando's kunnen we de uitvoer van het `sqlite3`-tooltje configureren.
 
@@ -180,7 +182,7 @@ Toon de mogelijke uitvoer-modi:
 .help mode
 ```
 
-Verander de uitvoer-modus naar `box` of `ascii`:
+Verander de uitvoer-modus naar `box` of `table`:
 
 ```
 .mode box
@@ -279,7 +281,9 @@ Je ziet volgende helptekst:
 .separator COL ?ROW?     Change the column and row separators
 ```
 
-De vraagtekens rond `ROW` wil zeggen dat we optioneel een ander scheidingsteken voor elke rij willen. Wij zullen echter voldoende hebben met enkel het instellen van het kolom-scheidingsteken: `COL` (en we geven dus niets mee voor `?ROW?`):
+Hiermee kunnen we zoveel tussen de **kolommen** als tussen de **rijen** een ander scheidingsteken kiezen. Het scheidingstekens voor nieuwe rijen laten we best op *een nieuwe regel* staan. (De vraagtekens van `?ROW?` in de helptekst betekenen dat dit een optioneel argument voor het `.separator`-commando is.)
+
+Wij hebben dus voldoende aan enkel het instellen van het kolom-scheidingsteken: `COL` (en we geven dus niets mee voor `?ROW?`):
 
 ```
 .sep ';'
@@ -287,6 +291,8 @@ SELECT "Joske" as Naam, 16 AS Leeftijd;
 .sep '-'
 SELECT "Joske" as Naam, 16 AS Leeftijd;
 ```
+
+Je ziet dus dat je `sqlite3` kan gebruiken om data op te maken in verschillende CSV-varianten!
 
 ## Oefening 02.07: Een eerste tabel
 
@@ -323,7 +329,7 @@ Laten we nu alle rijen uit deze tabel opvragen:
 SELECT * FROM Student;
 ```
 
-Er zijn echter nog geen **rijen** aanwezig in deze tabel, dus krijgen weer niets terug.
+Er zijn echter nog geen **rijen** aanwezig in deze tabel, dus krijgen we weer niets terug.
 
 Laten we dus 2 rijen toevoegen:
 
@@ -340,9 +346,17 @@ Wanneer we nu deze query uitvoeren, zien we de 2 rijen!
 SELECT * FROM Student;
 ```
 
-We hebben nu dus een databank met 1 tabel `Student`. De tabel heeft 2 kolommen: `Name` van type `TEXT` en `Age` van type `INTEGER`. De tabel heeft 2 rijen (of *records*), nl 2 leerlingen: *Joske* en *Mieke*.
+We hebben nu dus:
 
-Deze databank zit nu in het RAM-geheugen (de *transient in-memory database* die `sqlite3` bij het opstarten vermeldt). Als we `sqlite3` afsluiten, zijn we de gegevens (en het *schema*) dus weer kwijt! We zullen in het volgende hoofdstuk zien hoe we kunnen werken met databases op schijf (*persistent databases*).
+- een databank met 1 tabel: `Student`
+- de tabel `Student` heeft 2 kolommen:
+    - `Name` van type `TEXT`
+   `Age` van type `INTEGER`
+- de tabel heeft 2 rijen (of *records*), nl de 2 leerlingen: *Joske* en *Mieke*
+
+Deze databank zit nu in het RAM-geheugen (de *transient in-memory database* die `sqlite3` bij het opstarten vermeldt). Als we `sqlite3` afsluiten, zijn we de gegevens (en het *schema*) dus weer kwijt!
+
+We zullen in het volgende hoofdstuk zien hoe we kunnen werken met databases op schijf (*persistent databases*) en hoe we `.sql`-scripts kunnen uitvoeren zodat we niet steeds onze SQL-code kwijt zijn.
 
 ## Oefening 02.08: Kolommen hernoemen met SELECT ... AS ...
 
@@ -350,15 +364,17 @@ In deze cursus gebruiken we voor tabel- en kolomnamen steeds Engelse woorden.
 
 > Het idee hierachter is dat onze code misschien door internationale programmeurs zal moeten worden aangepast.
 
-Stel dat we gegevens uit de databank willen opvragen voor Nederlandstalige klanten. Het kan dan interessant zijn om de kolomnamen te vertalen.
+Stel dat we gegevens uit de databank willen opvragen voor Nederlandstalige gebruikers. Het kan dan interessant zijn om de kolomnamen te vertalen.
 
-Eerst moeten we elke kolom van de tabel expliciet opvragen i.p.v. het jokerteken (wildcard) `*` te gebruiken.
+Laten we dit stapsgewijs doen...
+
+Normaal vraag je alle kolommen van een tabel gemakkelijk op met het `*`-jokerteken.
 
 ```
 SELECT * FROM Student;
 ```
 
-wordt dus
+Maar nu zullen we eerst expliciet elke kolom moeten vermelden:
 
 ```
 SELECT Name, Age FROM Student;
@@ -375,13 +391,13 @@ De uitvoer ziet er hetzelfde uit als met de vorige query (in het geval van `.mod
 +-------+-----+
 ```
 
-Nu kunnen we de kolomnamen veranderen (b.v. een Nederlandse vertaling) met `AS`:
+Nu kunnen we pas de kolomnamen anders weergeven, b.v. voor een Nederlandse vertaling). We gebruiken het SQL-sleutelwoord `AS`:
 
 ```
 SELECT Name AS Naam, Age AS Leeftijd FROM Student;
 ```
 
-Nu zijn de kolomnamen in het Nederlands:
+Zo zou dit er uit moeten zien:
 
 ```
 +-------+----------+
@@ -393,11 +409,13 @@ Nu zijn de kolomnamen in het Nederlands:
 ```
 
 > Merk op dat de kolomnamen v.d. oorspronkelijk tabel **niet** veranderd zijn! Dit kan je controleren door opnieuw `SELECT * FROM Student;` uit te voeren.
-> We zouden dit *kunnen* doen met de `ALTER TABLE`-opdracht maar deze SQL-opdracht zullen we in deze cursus niet gebruiken.
+> We zouden dit *kunnen* doen met de `ALTER TABLE`-opdracht maar deze SQL-opdracht zullen we in deze cursus niet gebruiken. Dat zou bovendien strijdig zijn met ons principe dat we het design van de database ook toegankelijk willen maken voor anderstalige ontwikkelaars. (Dee gegevens in de rijen kunnen natuurlijk wel gewoon in het Nederlands.)
 
 ## Oefening 02.09: Over schema's en de TAB-toets
 
-Wanneer we kolomnamen moeten opgeven achter `SELECT`, is het wel zo handig als we de kolomnamen kunnen zien zodat we weten wat te typen.
+Wanneer we kolomnamen moeten opgeven achter `SELECT`, is het wel zo handig als we de kolomnamen kennen zodat we weten wat te typen.
+
+> Wanneer we `.sql`-scripts schrijven, is dit probleem niet zo groot omdat we dan het ganse script hebben om naar terug te kijken.
 
 Met dit commando krijg je het **schema** van de tabel `Student` te zien:
 
