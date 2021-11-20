@@ -13,11 +13,13 @@ sqlite3
 
 Als het goed is, kan je nu sqlite3 interactieve commando's geven en zie je de `sqlite>`-prompt.
 
-   SQLite version 3.37.0 2021-09-28 10:44:54
-   Enter ".help" for usage hints.
-   Connected to a transient in-memory database.
-   Use ".open FILENAME" to reopen on a persistent database.
-   sqlite>
+```
+SQLite version 3.37.0 2021-09-28 10:44:54
+Enter ".help" for usage hints.
+Connected to a transient in-memory database.
+Use ".open FILENAME" to reopen on a persistent database.
+sqlite>
+```
 
 ## Oefening 02.01: .quit
 
@@ -58,25 +60,29 @@ Wat gebeurt er als je het volgende doet:
 
 en je ziet waarschijnlijk:
 
-   sqlite> select
-      ...>
-      ...> 3
-      ...>
-      ...>
-      ...> ;
-   3
-   sqlite>
+```
+sqlite> select
+   ...>
+   ...> 3
+   ...>
+   ...>
+   ...> ;
+3
+sqlite>
+```
 
 Je krijg dus pas de `sqlite>`-prompt terug als je een **query** hebt afgesloten met `;`!
 
 Wat gebeurt er als je **onzin** typt (of fouten maakt tegen de syntax van SQL)?
 
-   sqlite> blabla
-      ...> 534
-      ...> xyz
-      ...> oeioei;
-   Error: near "blabla": syntax error
-   sqlite>
+```
+sqlite> blabla
+   ...> 534
+   ...> xyz
+   ...> oeioei;
+Error: near "blabla": syntax error
+sqlite>
+```
 
 Dan krijg je letterlijk een **syntax error** die je pas te zien krijgt als je `;` hebt getypt!
 
@@ -152,7 +158,9 @@ SELECT "Joske" as Naam, 16 AS Leeftijd;
 
 Waarschijnlijk krijg je deze uitvoer:
 
-   Joske|16
+```
+Joske|16
+```
 
 Dit kunnen we mooier maken.
 
@@ -187,13 +195,15 @@ SELECT "Joske" as Naam, 16 AS Leeftijd;
 
 De uitvoer zou er nu zo uit moeten zien:
 
-   sqlite> SELECT "Joske" as Naam, 16 AS Leeftijd;
-   +-------+----------+
-   | Naam  | Leeftijd |
-   +-------+----------+
-   | Joske | 16       |
-   +-------+----------+
-   sqlite>
+```
+sqlite> SELECT "Joske" as Naam, 16 AS Leeftijd;
++-------+----------+
+| Naam  | Leeftijd |
++-------+----------+
+| Joske | 16       |
++-------+----------+
+sqlite>
+```
 
 > Merk op dat de **dot-commando's** **GEEN** `;` op het einde hebben. Enkel SQL-code moet je afsluiten met een `;`.
 
@@ -241,8 +251,10 @@ SELECT "Joske" as Naam, 16 AS Leeftijd;
 
 Je zou nu deze uitvoer moeten krijgen:
 
-   Naam,Leeftijd
-   Joske,16
+```
+Naam,Leeftijd
+Joske,16
+```
 
 Desgewenst kan het tonen v.d. hoofdingen weer afgezet worden met
 
@@ -263,8 +275,9 @@ Soms willen we een ander scheidingsteken dan een `,`. Bekijk de mogelijkheden va
 
 Je ziet volgende helptekst:
 
-   .separator COL ?ROW?     Change the column and row separators
-
+```
+.separator COL ?ROW?     Change the column and row separators
+```
 
 De vraagtekens rond `ROW` wil zeggen dat we optioneel een ander scheidingsteken voor elke rij willen. Wij zullen echter voldoende hebben met enkel het instellen van het kolom-scheidingsteken: `COL` (en we geven dus niets mee voor `?ROW?`):
 
@@ -274,3 +287,62 @@ SELECT "Joske" as Naam, 16 AS Leeftijd;
 .sep '-'
 SELECT "Joske" as Naam, 16 AS Leeftijd;
 ```
+
+## Oefening 02.07: Een eerste tabel
+
+SQL is een taal om met relationele databanken te werken.
+Relationele databanken slaan informatie op in tabellen.
+
+Met dit dotcommando kunnen we alle huidige tabellen weergeven:
+
+```
+.tables
+```
+
+Momenteel zijn er waarschijnlijk geen tabellen dus krijg je niets terug.
+
+Laten we dus een tabel maken!
+
+Kopieer deze SQL-code en plak ze in ze in de `sqlite>`-prompt (of type over):
+
+```
+CREATE TABLE Student(
+   Name TEXT,
+   Age INTEGER
+);
+```
+Nu zou deze tabel wel gekend moeten zijn:
+
+```
+.tables
+```
+
+Laten we nu alle rijen uit deze tabel opvragen:
+
+```
+SELECT * FROM Student;
+```
+
+Er zijn echter nog geen **rijen** aanwezig in deze tabel, dus krijgen weer niets terug.
+
+Laten we dus 2 rijen toevoegen:
+
+```
+INSERT INTO Student(Name, Age) VALUES('Joske', 16);
+INSERT INTO Student(Name, Age) VALUES('Mieke', 15);
+```
+
+> Zet de modus liefst op iets moois, zoals `.mode box` of `.mode table`.
+
+Wanneer we nu deze query uitvoeren, zien we de 2 rijen!
+
+```
+SELECT * FROM Student;
+```
+
+We hebben nu dus een databank met 1 tabel `Student`. De tabel heeft 2 kolommen: `Name` van type `TEXT` en `Age` van `INTEGER`. De tabel heeft 2 rijen (of *records*), nl 2 leerlingen: Joske en Mieke.
+
+Deze databank zit nu in het RAM-geheugen (de *transient in-memory database* die `sqlite3` bij het opstarten vermeldt). Als we `sqlite3` zijn we de gegevens (en het *schema*) dus weer kwijt! We zullen in het volgende hoofdstuk zien hoe we kunnen werken met bestaande databases op schijf (*persistent databases*).
+
+
+

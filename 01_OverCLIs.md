@@ -47,9 +47,9 @@ Het argument `-h` of `-help` (soms `--help`) toont je alle mogelijk argumenten d
 Probeer dit in `PS>`:
 
 ```
-    sqlite3 -h
-    sqlite3 -help
-    sqlite3 --help
+sqlite3 -h
+sqlite3 -help
+sqlite3 --help
 ```
 
 We zullen later enkele argumenten gebruiken om meteen bij het opstarten al `.sqlite3`-bestanden of `.sql`-scripts te openen!
