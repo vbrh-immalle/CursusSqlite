@@ -81,7 +81,7 @@ Net zoals vele CLI-tools (en Powershell-commando's), kan je **argumenten**
 meegeven bij het aanroepen.
 
 Het argument `-h` of `-help` (soms `--help`) werkt bij de meeste tools en toont
-je een overzicht van alle (of de belangrijkste) mogelijk argumenten die we
+je een overzicht van alle (of de belangrijkste) mogelijke argumenten die we
 kunnen meegeven.
 
 Probeer dit in `PS>`:
@@ -100,13 +100,13 @@ go version
 go help
 ```
 
-> Je ziet dat somimge argumenten een `-` of `--` hebben. We noemen deze
+> Je ziet dat sommimge argumenten een `-` of `--` hebben. We noemen deze
 > argumenten ook wel **vlaggen** omdat ze door de streepjes lijken op een
 > vlaggenstok. Vaak is er een *korte* en een *lange* versie van een vlag.
 
 ### Sqlite3
 
-We zullen in hoofdstuk 03 enkele argumenten gebruiken om meteen bij het
+We zullen in [hoofdstuk 03](03_WerkenMetBestanden.md) enkele argumenten gebruiken om meteen bij het
 opstarten van `sqlite3` al meteen `.sqlite3`-bestanden of `.sql`-scripts te
 openen!
 

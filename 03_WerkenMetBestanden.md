@@ -1,3 +1,31 @@
+- [Hoofdstuk 03: Werken met bestanden](#hoofdstuk-03-werken-met-bestanden)
+  - [Inleiding](#inleiding)
+  - [Oefening 03.01: De bestanden verkennen](#oefening-0301-de-bestanden-verkennen)
+    - [03.01.01 Inleiding](#030101-inleiding)
+    - [03.01.02 Locatie v.d. bestanden](#030102-locatie-vd-bestanden)
+    - [03.01.03 Inhoud v.d. bestanden](#030103-inhoud-vd-bestanden)
+    - [03.01.04 VSCode en DB Browser for SQLite](#030104-vscode-en-db-browser-for-sqlite)
+    - [03.01.05 Conclusie](#030105-conclusie)
+  - [Oefening 03.02: `sqlite3` initialiseren met een `.sql`-script](#oefening-0302-sqlite3-initialiseren-met-een-sql-script)
+    - [03.02.01 De help van `sqlite3` bekijken](#030201-de-help-van-sqlite3-bekijken)
+    - [03.02.02 De `-init`-vlag gebruiken](#030202-de--init-vlag-gebruiken)
+    - [03.02.03 Verder werken met de database](#030203-verder-werken-met-de-database)
+    - [03.02.04 Conclusie](#030204-conclusie)
+    - [03.02.05 Vraagjes](#030205-vraagjes)
+  - [Oefening 03.03: `.sql`-scripts voor code-fragmenten](#oefening-0303-sql-scripts-voor-code-fragmenten)
+    - [03.03.01 Inleiding](#030301-inleiding)
+    - [03.03.02 Enkele queries in `.sql`-scripts verkennen](#030302-enkele-queries-in-sql-scripts-verkennen)
+    - [03.03.03 Opgeslagen queries uitvoeren](#030303-opgeslagen-queries-uitvoeren)
+    - [03.03.04 Conclusie](#030304-conclusie)
+    - [03.03.05 Tip](#030305-tip)
+  - [Oefening 03.04: Een `.sqlite3`-databank openen](#oefening-0304-een-sqlite3-databank-openen)
+    - [03.04.01 Inleiding](#030401-inleiding)
+    - [03.04.02 De help van `sqlite3` bekijken](#030402-de-help-van-sqlite3-bekijken)
+    - [03.04.03 Een `.sqlite3`-bestand openen](#030403-een-sqlite3-bestand-openen)
+    - [03.04.04 Gegevens toevoegen aan een bestaande databank](#030404-gegevens-toevoegen-aan-een-bestaande-databank)
+    - [03.04.05 Conclusie](#030405-conclusie)
+    - [03.04.06 Vraagjes](#030406-vraagjes)
+
 # Hoofdstuk 03: Werken met bestanden
 
 
@@ -18,8 +46,7 @@ mappen:
 - `dbs`: hierin staan de sqlite-databanken
 
 Je zal in dit hoofdstuk zelf nog geen `.sql`-bestanden moeten schrijven maar wel
-gebruik maken van een bestaand `.sql`-bestand om een SQLite-databank aan te
-maken.
+gebruik maken van een bestaande `.sql`-bestanden.
 
 
 
@@ -35,7 +62,7 @@ maken.
 
 We vertrekken van een Terminal met Powershell waarin je in de map `C:\ffmysql`
 deze repository (https://github.com/vbrh-immalle/CursusSqlite) geclone't hebt.
-Lees hoofdstuk 01 opnieuw als je dit nog niet hebt.
+Lees [hoofdstuk 01](01_OverCLIs.md) opnieuw als je dit nog niet hebt.
 
 Als het goed, heb je (minstens) deze hiërarchie van bestanden en mappen:
 
@@ -299,13 +326,15 @@ cat sql/ShowAllStudentsNL.sql
 
 ### 03.03.03 Opgeslagen queries uitvoeren
 
-We initialiseren opnieuw een sqlite-zandbak in het RAM-geheugen met het `dbs/student.sql`-script (in `PS>`):
+We initialiseren opnieuw een sqlite-zandbak in het RAM-geheugen met het
+`dbs/student.sql`-script (in `PS>`):
 
 ```powershell
 sqlite3 -init dbs/student.sql
 ```
 
-Met het dotcommando `.help` gaan we zoek naar een commando om sql-scripts in te lezen (in `sqlite>`):
+Met het dotcommando `.help` gaan we zoek naar een commando om sql-scripts in te
+lezen (in `sqlite>`):
 
 ```sql
 .help
@@ -317,46 +346,183 @@ We vinden o.a. deze regel:
 .read FILE               Read input from FILE
 ```
 
-Hoera! We hebben het commando gevonden om `.sql`-scripts in te lezen.
+Hoera! We hebben het commando gevonden om `.sql`-scripts vanaf de
+`sqlite>`-shell in te lezen!
 
-We kunnen de queries in de `.sql`-bestanden nu dus makkelijk zo uitvoeren:
+We kunnen de queries in de `.sql`-bestanden nu zo uitvoeren:
 
 ```
 .read sql/ShowAllStudentEN.sql
 .read sql/ShowAllStudentNL.sql
 ```
 
-Door een goede naam te geven het `.sql`-bestand, hebben we meteen een omschrijving voor de query.
+Door een goede naam te geven het `.sql`-bestand, hebben we meteen een
+omschrijving voor de query.
 
 
 ### 03.03.04 Conclusie
 
-Je ziet hopelijk stilaan hoe je een **workflow** kan gebruiken waarbij je VSCode
-gebruikt om `.sql`-bestanden te bewerken en `sqlite3` in de Terminal gebruikt om
-deze queries te testen!
+Je ziet hopelijk stilaan hoe je op een bepaalde manier te werk kan gaan (een
+*workflow*) waarbij je VSCode gebruikt om `.sql`-bestanden te bewerken en
+`sqlite3` in de Terminal gebruikt om deze queries te testen!
 
 Proficiat, je wordt nog een professionele DBA (DataBase-Administrator)!
 
 
 ### 03.03.05 Tip
 
-We zullen proberen in deze cursus een consistente naamgeving te geven aan de `.sql`-bestanden:
+We zullen proberen in deze cursus een consistente naamgeving te geven aan de
+`.sql`-bestanden:
 
-- scripts die beginnen met een hoofdletter (zoals `ShowAllStudentNL.sql`) zijn bedoeld om met `.read` uit te voeren
-- scripts die beginnen met een kleine letter (zoals `student.sql`) zijn eerder bedoeld om met `sqlite3 -init ...` uit te voeren (maar kunnen natuurlijk ook met `.read` uitgevoerd worden)
+- scripts die beginnen met een hoofdletter (zoals `ShowAllStudentNL.sql`) zijn
+  bedoeld om met `.read` uit te voeren
+- scripts die beginnen met een kleine letter (zoals `student.sql`) zijn eerder
+  bedoeld om met `sqlite3 -init ...` uit te voeren (maar kunnen natuurlijk ook
+  met `.read` uitgevoerd worden)
 
-Probeer deze regel zelf ook toe te passen!
+Probeer deze vuistregel zelf ook toe te passen!
 
 
 
 
-## Oefening 03.04: 
+## Oefening 03.04: Een `.sqlite3`-databank openen
+
+
+### 03.04.01 Inleiding
+
+In de map `dbs` vinden we de SQLite-databank `school.sqlite3`. We zullen in deze
+oefening deze databank gebruiken.
+
+We gaan in deze oefening dus niet enkel in het RAM-geheugen werken!
+
+
+### 03.04.02 De help van `sqlite3` bekijken
+
+Wanneer de help-output van `sqlite3` bekijken ... (in `PS>`) ...
+
+```powershell
+sqlite3 -help
+```
+
+zien we bovenaan deze help-string:
 
 ```
 Usage: sqlite3 [OPTIONS] FILENAME [SQL]
 ```
 
-en 
+Van de **Usage**-help kunnen we afleiden dat onmiddellijk na het woord `sqlite3`
+we `[OPTIONS]` kunnen meegeven.
+
+> `-init` is zo'n optie die we gebruikt hebben.
+
+Na de `[OPTIONS]` kunnen we een bestandsnaam (`FILENAME`) en nog extra `[SQL]`
+meegeven.
 
 
-Aan de hand van de **Usage**-help kunnen we afleide
+### 03.04.03 Een `.sqlite3`-bestand openen
+
+Voer deze code uit (in `PS>`):
+
+```powershell
+sqlite3 dbs/school.sqlite3
+```
+
+Voer nu dit dot-commando uit (in `sqlite>`):
+
+```sql
+.databases
+```
+
+Als het goed is zie je dit:
+
+```
+sqlite> .databases
+main: C:\ffsql\CursusSqlite\dbs\school.sqlite3
+sqlite>
+```
+
+Dit wil zeggen dat we nu niet in een **transient in-memory database** werken
+zoals in alle vorige oefeningen maar dat we dit sqlite-bestand op schijf
+gebruiken!
+
+> De term **transient in-memory database** is hoe `sqlite3` dit noemt als we
+> opstarten zonder een database mee te geven. Het gaat dus als het ware over een
+> *vluchtige* database (in het RAM-geheugen).
+
+We kunnen de tabellen (en het schema) in deze database controleren en queries
+uitvoeren (je ziet dat de `Student`-tabel aanwezig is):
+
+```sql
+.tables
+.schema
+SELECT * FROM Student;
+```
+
+### 03.04.04 Gegevens toevoegen aan een bestaande databank
+
+Alle queries die we nu uitvoeren, zullen opgeslagen worden op schijf.
+We werken nu dus niet meer in een *zandbak* maar zullen effectief het bestand `school.sqlite3` kunnen aanpassen.
+
+`SELECT`-queries vragen alleen maar gegevens op en wijzigen dus niets.
+
+Maar als je jezelf toevoegt aan de leerlingen, zal je zien dat het bestand gewijzigd is!
+
+Probeer deze query om jezelf toe te voegen aan de `Student`-tabel:
+
+```sql
+INSERT INTO Student(Name, Age) VALUES ('Ikke', 16);
+```
+
+Controleer:
+
+```sql
+SELECT * FROM Student;
+```
+
+Verlaat nu `sqlite3`:
+
+```sql
+.quit
+```
+
+> We kunnen nu ook even `git status` proberen. Git zou moeten detecteren dat
+> `school.sqlite3` gewijzigd is t.o.v. de laatste keer dat we de repository
+> geclone'd hebben!
+
+Start `sqlite3` opnieuw op met dezelfde database (in `PS>`):
+
+```
+sqlite3 dbs/school.sqlite3
+```
+
+Controleer:
+
+```sql
+SELECT * FROM Student;
+```
+
+### 03.04.05 Conclusie
+
+Proficiat! Je kan nu echte SQLite-databases openen en exploreren en zelfs aanpassen!
+
+TIPS: 
+
+- Gebruik het dot-commando `.databases` om te controleren in welke database je
+  aan het werken bent.
+- Je kan een `in-memory-database` ook opslaan naar een bestand. Het
+  `.save`-commando kan zeer handig zijn als je al heel wat werk hebt verricht in
+  het RAM-geheugen en dit wil opslaan op schijf!
+
+> Denk eraan: je werkt in een git-repository dus als je de originele bestanden
+> overschrijft, kan je toch nog steeds de originele bestanden terughalen.
+
+### 03.04.06 Vraagjes
+
+1. Kan je met `sqlite3 blabla.sqlite3` een nieuwe databank maken ook al bestaat
+   het bestand `blabla.sqlite3` nog niet?
+
+2. Probeer de commando's `.save`, `.schema` en `.dump` uit en omschrijf het nut
+   van elk van deze commando's.
+
+3. Kan je uitleggen wat er gebeurt als we `sqlite3 -init bla.sql blabla.sqlite3`
+   uitvoeren?

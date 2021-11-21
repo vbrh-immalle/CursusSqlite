@@ -20,7 +20,7 @@
 
 In dit hoofdstuk verkennen we de mogelijkheden van de `sqlite3`-applicatie,
 voornamelijk in de *interactieve* modus. We werken volledig in het RAM-geheugen
-en gebruiken nog geen externe bestanden (dat doen we in **hoofdstuk 03**).
+en gebruiken nog geen externe bestanden (dat doen we in [hoofdstuk 03](03_WerkenMetBestanden.md)).
 
 We maken ook kennis met enkele SQL-commando's.
 
