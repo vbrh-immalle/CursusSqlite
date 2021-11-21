@@ -410,10 +410,21 @@ INSERT INTO Student(Name, Age) VALUES('Mieke', 15);
 
 > Zet de modus liefst op iets moois, zoals `.mode box` of `.mode table`.
 
-Wanneer we nu deze query uitvoeren, zien we de 2 rijen!
+Wanneer we nu deze query uitvoeren ...
 
 ```
 SELECT * FROM Student;
+```
+
+... zien we de 2 rijen (en de hoofdingen):
+
+```
++-------+-----+
+| Name  | Age |
++-------+-----+
+| Joske | 16  |
+| Mieke | 15  |
++-------+-----+
 ```
 
 We hebben nu dus:
@@ -514,6 +525,18 @@ geven aangezien we maar 1 tabel hebben.
 
 ```
 .schema
+```
+
+Je ziet mogelijk dit:
+
+```
+sqlite>
+sqlite> .schema
+CREATE TABLE Student(
+   Name TEXT,
+   Age INTEGER
+);
+sqlite>
 ```
 
 > Eigenlijk zijn deze "schema's" gewoon de `CREATE TABLE`-code die we eerder
