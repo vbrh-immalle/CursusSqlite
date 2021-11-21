@@ -1,4 +1,5 @@
-- [Hoofdstuk 00: Installatie en configuratie](#hoofdstuk-00-installatie-en-configuratie)
+- [Hoofdstuk 00: Installatie en
+  configuratie](#hoofdstuk-00-installatie-en-configuratie)
   - [Inleiding](#inleiding)
   - [Uitproberen](#uitproberen)
   - [Windows / Powershell](#windows--powershell)
@@ -11,11 +12,15 @@
 
 Op sommige Linux- en op macOS-systemen is `sqlite3` al standaard geïnstalleerd.
 
-Op Windows kan je het zelf installeren met een package manager of je kan het rechtstreeks downloaden van https://www.sqlite.org.
+Op Windows kan je het zelf installeren met een package manager of je kan het
+rechtstreeks downloaden van https://www.sqlite.org.
 
-Om te controleren of je het programma hebt (en het reeds in je `PATH` aanwezig is), kan je een aantal dingen doen.
+Om te controleren of je het programma hebt (en het reeds in je `PATH` aanwezig
+is), kan je een aantal dingen doen.
 
-> Het configureren van de `PATH`-omgevingsvariabele zodat een programma (in dit geval `sqlite3`) overal in de (Power)shell beschikbaar is, wordt in een andere cursus uitgelegd!
+> Het configureren van de `PATH`-omgevingsvariabele zodat een programma (in dit
+> geval `sqlite3`) overal in de (Power)shell beschikbaar is, wordt in een andere
+> cursus uitgelegd!
 
 ## Uitproberen
 
@@ -36,7 +41,11 @@ Use ".open FILENAME" to reopen on a persistent database.
 
 Om terug naar de shell te gaan, type `.quit` of `.exit`.
 
-> Hier zie je dat we blijkbaar versie 3.37.0 gebruiken en dat we momenteel "verbonden" zijn met een **in-memory database**. Dat wil zeggen dat alles wat we doen niet zal  worden opgeslagen (niet **persistent** zal zijn) omdat we niet verbonden zijn met een database-bestand op schijf. We kunnen hier dus rustig in "spelen" zoals in een *zandbak*, zonder verdere gevolgen.
+> Hier zie je dat we blijkbaar versie 3.37.0 gebruiken en dat we momenteel
+> "verbonden" zijn met een **in-memory database**. Dat wil zeggen dat alles wat
+> we doen niet zal  worden opgeslagen (niet **persistent** zal zijn) omdat we
+> niet verbonden zijn met een database-bestand op schijf. We kunnen hier dus
+> rustig in "spelen" zoals in een *zandbak*, zonder verdere gevolgen.
 
 
 ## Windows / Powershell
@@ -59,5 +68,6 @@ which sqlite3
 
 Vraag assistentie als het je niet lukt om `sqlite3` op te starten!
 
-> Of neem **hoofdstuk 01** door! Hopelijk helpt die informatie je voldoende verder!
+> Of neem **hoofdstuk 01** door! Hopelijk helpt die informatie je voldoende
+> verder!
 

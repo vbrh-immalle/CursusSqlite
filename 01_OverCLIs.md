@@ -45,13 +45,15 @@ directory** meestal `C:\Users\username`. Je prompt ziet er dan zo uit:
 PS C:\Users\username>
 ``` 
 
-Je kan van schijf veranderen met b.v. `D:`. Je huidige map wordt per schijf *onthouden*.
+Je kan van schijf veranderen met b.v. `D:`. Je huidige map wordt per schijf
+*onthouden*.
 
 ```
 PS D:\>
 ```
 
-Een nieuwe lege werkmap maken (b.v. `C:\ffsql`) doe je dus b.v. met deze commando's:
+Een nieuwe lege werkmap maken (b.v. `C:\ffsql`) doe je dus b.v. met deze
+commando's:
 
 ```
 c:
@@ -105,7 +107,8 @@ go help
 ### Sqlite3
 
 We zullen in hoofdstuk 03 enkele argumenten gebruiken om meteen bij het
-opstarten van `sqlite3` al meteen `.sqlite3`-bestanden of `.sql`-scripts te openen!
+opstarten van `sqlite3` al meteen `.sqlite3`-bestanden of `.sql`-scripts te
+openen!
 
 Op https://sqlite.org/download.html kan je `sqlite3` downloaden. Zoek op deze
 webpagina naar het bestand met in de naam `sqlite-tools-win32-x86` (of een
@@ -122,7 +125,8 @@ sqlite3 --version
 
 ### Git
 
-Een ander CLI-tooltje dat we gebruiken is `git`. Je kan dit vinden op https://git-scm.com/downloads.
+Een ander CLI-tooltje dat we gebruiken is `git`. Je kan dit vinden op
+https://git-scm.com/downloads.
 
 Nadien zouden deze commando's moeten werken:
 
@@ -131,8 +135,8 @@ git --version
 git --help
 ```
 
-`git` is een programma dat ook met de *vlaggenstok-*argumenten werkt maar ook met
-zogenaamde *subcommando's*. B.v. bij het uitvoeren van `git status` roep je
+`git` is een programma dat ook met de **vlaggenstok-argumenten** werkt maar ook
+met zogenaamde *subcommando's*. B.v. bij het uitvoeren van `git status` roep je
 eigenlijk het `status` subcommando aan. Je kan dan daarna nog extra argumenten
 meegeven.
 
@@ -142,7 +146,8 @@ Met dit commando zie je welke vlaggen (argumenten) het subcommando `status` heef
 git status -h
 ```
 
-Je kan ook een langere versie v.d. help-pagina opvragen (misschien opent dit zelfs een webbrowser) met
+Je kan ook een langere versie v.d. help-pagina opvragen (misschien opent dit
+zelfs een webbrowser) met
 
 ```
 git status --help
@@ -220,6 +225,16 @@ Meer hierover in het volgende hoofdstuk.
 Een shell-sessie waarin je `sqlite3` opstart in de `c:\ffsql`-directory en
 vervolgens weer verlaat, ziet er dus b.v. zo uit:
 
+```
+PS C:\ffsql> sqlite3
+SQLite version 3.33.0 2020-08-14 13:23:32
+Enter ".help" for usage hints.
+Connected to a transient in-memory database.
+Use ".open FILENAME" to reopen on a persistent database.
+sqlite> .quit
+PS C:\ffsql>
+```
+
 ## Werken met Git en deze repository
 
 Een map op schijf *kan* een git-repository zijn. Om dit te controleren doe je
@@ -232,7 +247,8 @@ Vanaf hoofdstuk 03 zal je met `.sql`- en `.sqlite3`-bestanden moeten werken.
 Deze bestanden staan in de GitHub-repository
 https://github.com/vbrh-immalle/CursusSqlite. Je moet deze repo dus **clone**'n!
 
-Zorg dat je in een lege werkmap staat. Je Powershell-prompt ziet er dus b.v. zo uit:
+Zorg dat je in een lege werkmap staat. Je Powershell-prompt ziet er dus b.v. zo
+uit:
 
 ```
 PS C:\ffsql>
@@ -283,9 +299,27 @@ git-client gebruiken. Je opent gemakkelijk VSCode in de huidige directory met
 code .
 ```
 
-(De `.` zorgt ervoor dat de huidige directory als een **project** wordt geopend.)
+(De `.` zorgt ervoor dat de huidige directory als een **project** wordt
+geopend.)
 
-Dit is geen cursus over `git` maar hopelijk ken je minstens deze belangrijke commando's:
+Een (Power)shell-sessie waarin je deze repo clone't en vervolgens de lokale repo
+opent in VSCode, ziet er dus b.v. zo uit:
+
+```
+PS C:\ffsql> git clone https://github.com/vbrh-immalle/CursusSqlite
+Cloning into 'CursusSqlite'...
+remote: Enumerating objects: 63, done.
+remote: Counting objects: 100% (63/63), done.
+remote: Compressing objects: 100% (43/43), done.
+remote: Total 63 (delta 31), reused 45 (delta 16), pack-reused 0
+Unpacking objects: 100% (63/63), 22.67 KiB | 108.00 KiB/s, done.
+PS C:\ffsql> cd .\CursusSqlite\
+PS C:\ffsql\CursusSqlite> code .
+PS C:\ffsql\CursusSqlite>
+```
+
+Dit is geen cursus over `git` maar hopelijk ken je minstens deze belangrijke
+commando's:
 
 - `git status`
 - `git clone`
