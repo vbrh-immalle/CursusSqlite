@@ -487,7 +487,7 @@ Zo zou dit er uit moeten zien:
 +-------+----------+
 ```
 
-> Merk op dat de kolomnamen v.d. oorspronkelijk tabel **niet** veranderd zijn!
+> Merk op dat de kolomnamen v.d. oorspronkelijke tabel **niet** veranderd zijn!
 > Dit kan je controleren door opnieuw `SELECT * FROM Student;` uit te voeren. We
 > zouden dit *kunnen* doen met de `ALTER TABLE`-opdracht maar deze SQL-opdracht
 > zullen we in deze cursus niet gebruiken. Dat zou bovendien strijdig zijn met
