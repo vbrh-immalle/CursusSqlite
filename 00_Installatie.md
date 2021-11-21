@@ -1,10 +1,21 @@
-# Installatie
+- [Hoofdstuk 00: Installatie en configuratie](#hoofdstuk-00-installatie-en-configuratie)
+  - [Inleiding](#inleiding)
+  - [Uitproberen](#uitproberen)
+  - [Windows / Powershell](#windows--powershell)
+  - [macOS / Linux](#macos--linux)
+  - [ASK4HELP!](#ask4help)
+
+# Hoofdstuk 00: Installatie en configuratie
+
+## Inleiding
 
 Op sommige Linux- en op macOS-systemen is `sqlite3` al standaard geïnstalleerd.
 
 Op Windows kan je het zelf installeren met een package manager of je kan het rechtstreeks downloaden van https://www.sqlite.org.
 
 Om te controleren of je het programma hebt (en het reeds in je `PATH` aanwezig is), kan je een aantal dingen doen.
+
+> Het configureren van de `PATH`-omgevingsvariabele zodat een programma (in dit geval `sqlite3`) overal in de (Power)shell beschikbaar is, wordt in een andere cursus uitgelegd!
 
 ## Uitproberen
 
@@ -47,3 +58,6 @@ which sqlite3
 ## ASK4HELP!
 
 Vraag assistentie als het je niet lukt om `sqlite3` op te starten!
+
+> Of neem **hoofdstuk 01** door! Hopelijk helpt die informatie je voldoende verder!
+
