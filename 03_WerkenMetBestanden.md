@@ -62,9 +62,9 @@ gebruik maken van een bestaande `.sql`-bestanden.
 
 We vertrekken van een Terminal met Powershell waarin je in de map `C:\ffmysql`
 deze repository (https://github.com/vbrh-immalle/CursusSqlite) geclone't hebt.
-Lees [hoofdstuk 01](01_OverCLIs.md) opnieuw als je dit nog niet hebt.
+Zie Lees [hoofdstuk 01 (werken met git en deze repository)](01_OverCLIs.md#werken-met-git-en-deze-repository) opnieuw als je dit nog niet hebt.
 
-Als het goed, heb je (minstens) deze hiërarchie van bestanden en mappen:
+Als `git clone https://github.com/vbrh-immalle/CursusSqlite` gelukt is, heb je (minstens) deze hiërarchie van bestanden en mappen:
 
 ```
 C:\ffsql
@@ -356,7 +356,7 @@ We kunnen de queries in de `.sql`-bestanden nu zo uitvoeren:
 .read sql/ShowAllStudentNL.sql
 ```
 
-Door een goede naam te geven het `.sql`-bestand, hebben we meteen een
+Door een goede naam te geven aan het `.sql`-bestand, hebben we meteen een
 omschrijving voor de query.
 
 
