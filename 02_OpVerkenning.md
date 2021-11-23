@@ -238,6 +238,8 @@ Toon de huidige uitvoer-modus:
 .mode
 ```
 
+> Of gebruik `.show` wat nog veel meer instellingen toont dan enkel de huidige *mode*!
+
 Toon de mogelijke uitvoer-modi:
 
 ```

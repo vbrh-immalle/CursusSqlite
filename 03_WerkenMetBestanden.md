@@ -507,8 +507,8 @@ Proficiat! Je kan nu echte SQLite-databases openen en exploreren en zelfs aanpas
 
 TIPS: 
 
-- Gebruik het dot-commando `.databases` om te controleren in welke database je
-  aan het werken bent.
+- Gebruik het dot-commando `.databases` of `.show` om te controleren in welke
+  database je aan het werken bent (`.show` toont eveneens andere instellingen)
 - Je kan een `in-memory-database` ook opslaan naar een bestand. Het
   `.save`-commando kan zeer handig zijn als je al heel wat werk hebt verricht in
   het RAM-geheugen en dit wil opslaan op schijf!
