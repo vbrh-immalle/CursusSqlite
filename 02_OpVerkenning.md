@@ -187,6 +187,9 @@ Probeer volgende snelkoppelingen tijdens het bewerken van een regel:
 - Pijltje omlaag of `CTRL-N` (next) om een recentere lijn uit de history te
   tonen
 
+> Niet alle snelkoppelingen werken in Windows Terminal. Je kan daar wel `F7`
+> proberen!
+
 Let wel op als je eerder **multi-line** queries hebt ingegeven! B.v.
 
 ```
@@ -555,6 +558,8 @@ De `sqlite3`-tool ondersteunt ook de `<TAB>`-toets. Op elk moment kan je op
 `<TAB>` drukken en dan zal je enkele mogelijke aanvullingen voorgesteld krijgen.
 Er wordt hiervoor ook gezocht in alle kolomnamen van alle tabellen dus dit kan
 ook een goede hulp zijn!
+
+> **OPMERKING**: `<tab>`-code completion werkt niet in de Windows Terminal!
 
 Probeer volgende zaken te typen:
 
