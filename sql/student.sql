@@ -1,7 +1,3 @@
-.mode table
-.sep ';'
-.header on
-
 DROP TABLE IF EXISTS Student;
 
 CREATE TABLE Student(

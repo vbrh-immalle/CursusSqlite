@@ -11,7 +11,7 @@
     - [03.02.02 De `-init`-vlag gebruiken](#030202-de--init-vlag-gebruiken)
     - [03.02.03 Verder werken met de database](#030203-verder-werken-met-de-database)
     - [03.02.04 Conclusie](#030204-conclusie)
-    - [03.02.05 Vraagjes](#030205-vraagjes)
+    - [03.02.05 Extra commando's in `.sql`-bestanden voor `sqlite3`](#030205-extra-commandos-in-sql-bestanden-voor-sqlite3)
   - [Oefening 03.03: `.sql`-scripts voor code-fragmenten](#oefening-0303-sql-scripts-voor-code-fragmenten)
     - [03.03.01 Inleiding](#030301-inleiding)
     - [03.03.02 Enkele queries in `.sql`-scripts verkennen](#030302-enkele-queries-in-sql-scripts-verkennen)
@@ -22,8 +22,9 @@
     - [03.04.01 Inleiding](#030401-inleiding)
     - [03.04.02 De help van `sqlite3` bekijken](#030402-de-help-van-sqlite3-bekijken)
     - [03.04.03 Een `.sqlite3`-bestand openen](#030403-een-sqlite3-bestand-openen)
-    - [03.04.04 Gegevens toevoegen aan een bestaande databank](#030404-gegevens-toevoegen-aan-een-bestaande-databank)
-    - [03.04.05 Conclusie](#030405-conclusie)
+    - [03.04.04 Gegevens toevoegen aan een bestaande databank met `sqlite3`](#030404-gegevens-toevoegen-aan-een-bestaande-databank-met-sqlite3)
+    - [03.04.05 Gegevens toevoegen aan een bestaande databank met *DB Browser for SQLite*](#030405-gegevens-toevoegen-aan-een-bestaande-databank-met-db-browser-for-sqlite)
+    - [03.04.06 Conclusie](#030406-conclusie)
     - [03.04.06 Vraagjes](#030406-vraagjes)
 
 # Hoofdstuk 03: Werken met bestanden
@@ -283,13 +284,27 @@ Als we in onze *zandbak* een mooie nieuwe query ontdekken die we willen opslaan,
 slaan we deze dus liefst op in een (nieuw) `.sql`-bestand!
 
 
-### 03.02.05 Vraagjes
+### 03.02.05 Extra commando's in `.sql`-bestanden voor `sqlite3`
 
-Is het je opgevallen dat de output van de tabel al meteen werd weergegeven als
-een (mooie) ASCII-art-tabel? Kan je verklaren hoe dat komt?
+Met *DB Browser for SQLite* kan je het bestand `sql/student.sql` openen via
+`File -> Import -> Database from SQL File...`. Het programma zal dan een
+database aanmaken en je vragen waar je deze database wil opslaan.
 
+Moest je enkel met het `sqlite3`-CLI-tooltje werken, zou je bovenaan het bestand
+`sql/student.sql` ook deze regels kunnen toevoegen:
 
+```
+.mode table
+.sep ';'
+.header on
+```
 
+Dit zijn echter commando's die enkel het `sqlite3`-CLI-tooltje begrijpt. Ze
+zorgen er b.v. voor dat de weergave binnen het `sqlite3`-CLI-tooltje al
+geconfigureerd worden.
+
+Wanneer we onze `.sql`-bestanden dus ook met *DB Browser for SQLite* willen
+gebruiken, kunnen we deze commando's spijtig genoeg niet gebruiken.
 
 ## Oefening 03.03: `.sql`-scripts voor code-fragmenten
 
@@ -458,14 +473,18 @@ uitvoeren (je ziet dat de `Student`-tabel aanwezig is):
 SELECT * FROM Student;
 ```
 
-### 03.04.04 Gegevens toevoegen aan een bestaande databank
+### 03.04.04 Gegevens toevoegen aan een bestaande databank met `sqlite3`
 
-Alle queries die we nu uitvoeren, zullen opgeslagen worden op schijf.
-We werken nu dus niet meer in een *zandbak* maar zullen effectief het bestand `school.sqlite3` kunnen aanpassen.
+Wanneer je `sqlite3 dbs/school.sqlite3` hebt uitgevoerd, zullen alle queries die
+we uitvoeren en de gegevens in de database wijzigen, worden opgeslagen in het
+bestand `dbs/school.sqlite3`. We werken nu dus niet meer in een *zandbak in het
+RAM-geheugen* maar we zullen effectief het bestand `school.sqlite3` kunnen
+aanpassen.
 
 `SELECT`-queries vragen alleen maar gegevens op en wijzigen dus niets.
 
-Maar als je jezelf toevoegt aan de leerlingen, zal je zien dat het bestand gewijzigd is!
+Maar als je jezelf toevoegt aan de leerlingen, zal je zien dat het bestand
+gewijzigd is!
 
 Probeer deze query om jezelf toe te voegen aan de `Student`-tabel:
 
@@ -485,7 +504,10 @@ Verlaat nu `sqlite3`:
 .quit
 ```
 
-> We kunnen nu ook even `git status` proberen. Git zou moeten detecteren dat
+We zullen nu aantonen dat het bestand `dbs/school.sqlite3` wel degelijk
+gewijzigd is!
+
+> We kunnen even `git status` proberen. Git zou moeten detecteren dat
 > `school.sqlite3` gewijzigd is t.o.v. de laatste keer dat we de repository
 > geclone'd hebben!
 
@@ -501,7 +523,25 @@ Controleer:
 SELECT * FROM Student;
 ```
 
-### 03.04.05 Conclusie
+De rij die we in de vorige `sqlite3`-sessie hebben toegevoegd, is nog steeds
+aanwezig! Dit toont aan dat we het database-bestand (`dbs/school.sqlite3`)
+gewijzigd hebben!
+
+### 03.04.05 Gegevens toevoegen aan een bestaande databank met *DB Browser for SQLite*
+
+We kunnen de vorige oefening herhalen met *DB Browser for SQLite*.
+
+- Open de databank `dbs/school.sqlite3` via `File -> Open Database...`
+- Voer een nieuwe `INSERT`-query uit om een rij toe te voegen
+- (Controleer eventueel met `git status` of kijk naar de grootte v.h. bestand en
+  laatste wijzigingsdatum in Verkenner om te controleren of `dbs/school.sqlite3`
+  inderdaad veranderd is.)
+- Sluit de database met `File -> Close Database...`
+- Open de database opnieuw en verifieer dat de toegevoegde rij nog steeds
+  aanwezig is
+
+
+### 03.04.06 Conclusie
 
 Proficiat! Je kan nu echte SQLite-databases openen en exploreren en zelfs aanpassen!
 
