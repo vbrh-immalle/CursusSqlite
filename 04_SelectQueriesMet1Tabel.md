@@ -90,7 +90,8 @@ Met `OFFSET 10` zeggen we dat we moeten beginnen met de 10e rij.
 ## Oefening 04.01: Chinook verkennen
 
 `dbs/Chinook.sqlite3` is een database van een fictieve online muziekwinkel waar
-muziek-albums van verschillende artiesten en genres kunnen gedownload worden.
+muziek-albums van verschillende artiesten in allerlei muziek-genres kunnen
+gedownload worden.
 
 Open de database b.v. met `sqlite3 dbs/chinook.sqlite3`.
 
@@ -112,7 +113,7 @@ Je zou deze 11 tabellen moeten tegenkomen:
 
 We kunnen van elke tabel het schema bekijken en vervolgens naar alle (of enkele) rijen kijken.
 
-> TIP: zorg voor mooiere output met `.box`!
+> TIP: zorg voor mooiere output met `.mode box`!
 
 ```
 .schema Album
@@ -122,10 +123,10 @@ SELECT * FROM Album LIMIT 10;
 
 Wanneer je de gegevens van alle tabellen even bekeken hebt, kan je dus vaststellen dat:
 
-- er werknemers zijn in `Employee`
-- er klanten zijn in `Customer`
-- klanten soms albums kopen dewelke worden opgeslagen in facturen `Invoice` en
-  elke factuur kan bestaan bestaan uit meerdere aankopen `InvoiceLine` 
+- er werknemers (`Employee`) zijn 
+- er klanten (`Customer`) zijn
+- klanten soms albums (`Album`) kopen dewelke worden opgeslagen in facturen (`Invoice`) en
+  elke factuur kan bestaan bestaan uit meerdere aankopen (`InvoiceLine`) 
 - er verschillende bestandsformaten (`MediaType`) kunnen gedownload worden 
 - er uiteraard albums zijn (`Album`) waarop verschillende nummers staan
   (`Track`) en die door een bepaalde artiest (`Artist`) zijn gemaakt
@@ -142,7 +143,7 @@ Wanneer je de gegevens van alle tabellen even bekeken hebt, kan je dus vaststell
 > TIP: Met `.schema Customer` kan je de naam v.d. velden achterhalen. Of je kan
 > natuurlijk gewoon `SELECT * FROM Customer LIMIT 10` doen als de output zo
 > ingesteld is dat ook de headers worden getoond. Controleer `.headers` of
-> gebruik gewoon `.box` en alles staat meteen duidelijk.
+> gebruik gewoon `.mode box` en alles staat meteen duidelijk.
 
 ```
 SELECT *
