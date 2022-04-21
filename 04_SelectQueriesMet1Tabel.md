@@ -6,6 +6,9 @@
     - [Slechts een gedeelte van de rijen opvragen](#slechts-een-gedeelte-van-de-rijen-opvragen)
   - [Oefening 04.01: Chinook verkennen](#oefening-0401-chinook-verkennen)
   - [Oefening 04.02: Alle klanten uit België](#oefening-0402-alle-klanten-uit-belgië)
+  - [Oefening 04.03: Alle artiesten die beginnen met de letter C](#oefening-0403-alle-artiesten-die-beginnen-met-de-letter-c)
+  - [Oefening 04.04: Alle albums die een getal in hun titel hebben](#oefening-0404-alle-albums-die-een-getal-in-hun-titel-hebben)
+  - [Oefening 04.05: Alle albums die uit meer dan 1 CD bestaan](#oefening-0405-alle-albums-die-uit-meer-dan-1-cd-bestaan)
 
 # Hoofdstuk 04: Select-queries met 1 tabel
 
@@ -47,6 +50,27 @@ Een voorwaarde is steeds een **booleaanse expressie** dus iets dat `true` of
 
 Met de Booleaanse operatoren `AND` en `OR` kunnen we verschillende expressies
 aan elkaar koppelen.
+
+Expressies hangen af van het datatype van elke kolom. Als de kolom een **getal** is
+kunnen we b.v. **wiskundige vergelijksoperatoren** gebruiken, zoals:
+
+- groter dan: `WHERE kolom2 > 10`
+- kleiner dan: `WHERE kolom2 < 10`
+- groter of gelijk aan: `WHERE kolom2 >= 10`
+- kleiner of gelijk aan: `WHERE kolom2 <= 10`
+- gelijk aan: `WHERE kolom2 = 10` (Opgelet: geen dubbele `==`!)
+
+Wanneer de een kolom v.h. type **string** is kunnen we b.v. volgende
+vergelijkingensexpressies gebruiken:
+
+- gelijk aan: `WHERE kolom1 = 'abc'`
+- begint met hoofdletter A: `WHERE kolom1 LIKE 'A%'`
+- eindigt met een A: `WHERE kolom1 LIKE '%A'`
+- bevat een A: `WHERE kolom1 LIKE '%A%'`
+
+> De `LIKE`-operator is een interessante operator waarbij we dankzij het
+> **jokerteken `%`** interessante zoekopdrachten voor `string`-/tekstkolommen kunnen
+> schrijven. 
 
 ### Volgorde bepalen
 
@@ -153,3 +177,44 @@ SELECT *
 
 Toon nu enkele belangrijke kolommen (maar niet allemaal) en voorzie de
 kolomnamen van een Nederlandse vertaling.
+
+## Oefening 04.03: Alle artiesten die beginnen met de letter C
+
+```
+SELECT *
+  FROM Artist
+ WHERE Name LIKE 'C%';
+```
+
+## Oefening 04.04: Alle albums die een getal in hun titel hebben
+
+Denk eraan dat het getal dat voorkomt in de titel een onderdeel v.d. tekst is.
+We kunnen dus niet zomaar wiskundige operaties gaan uitvoeren en moeten de
+getallen eigenlijk als *karakters* beschouwen.
+
+```
+SELECT *
+  FROM Album
+ WHERE 
+         Title LIKE '%1%' OR
+         Title LIKE '%0%' OR
+         Title LIKE '%2%' OR
+         Title LIKE '%3%' OR
+         Title LIKE '%4%' OR
+         Title LIKE '%5%' OR
+         Title LIKE '%6%' OR
+         Title LIKE '%7%' OR
+         Title LIKE '%8%' OR
+         Title LIKE '%9%'; 
+```
+
+## Oefening 04.05: Alle albums die uit meer dan 1 CD bestaan
+
+We kunnen dit proberen te bekomen door in de titel te zoeken naar bepaalde
+woorden die voorkomen maar helemaal waterdicht is deze query natuurlijk niet!
+
+```
+SELECT *
+  FROM Album
+ WHERE Title LIKE '%Disc%' OR Title LIKE '%CD%';
+```
