@@ -144,8 +144,7 @@ Get-Content sql/student.sql
 type sql/student.sql
 ```
 
-Je ziet nu de inhoud van een script dat voor `sqlite3` bedoeld is met zowel
-dot-commando's als SQL-code!
+Je ziet nu de inhoud van een script met SQL-code dat voor `sqlite3` bedoeld is.
 
 Wanneer je hetzelfde probeert met `dbs/school.sqlite3` zal de output niet zo
 mooi zijn. Dit is immers een **binair** bestand. Je kan wel met `Format-Hex` de
@@ -157,7 +156,7 @@ herkenbaar zijn.
 ```
 cat dbs/school.sqlite3                              # dit geeft vele rare tekens in de output -> het is geen tekstbestand
 Format-Hex dbs/school.sqlite3                       # dit toont alle bytes van het bestand -> veel output
-Format-Hex dbs/schooo.sqlite3 | Select -First 16    # dit toont enkel de eerste 16 regels oftewel de eerste 256 bytes v.h. bestand
+Format-Hex dbs/school.sqlite3 | Select -First 16    # dit toont enkel de eerste 16 regels oftewel de eerste 256 bytes v.h. bestand
 ```
 
 We stellen dus vast dat elk `.sqlite3`-bestand begint met deze 16 bytes:
