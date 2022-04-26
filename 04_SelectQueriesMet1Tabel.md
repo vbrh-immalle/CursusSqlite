@@ -164,7 +164,7 @@ Wanneer je de gegevens van alle tabellen even bekeken hebt, kan je dus vaststell
 
 ## Oefening 04.02: Alle klanten uit België
 
-Zie [sql/oef04/02.sql]().
+Zie [sql/oef04/02.sql](sql/oef04/02.sql).
 
 > TIP: Met `.schema Customer` kan je de naam v.d. velden achterhalen. Of je kan
 > natuurlijk gewoon `SELECT * FROM Customer LIMIT 10` doen als de output zo
