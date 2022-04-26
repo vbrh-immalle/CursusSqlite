@@ -175,11 +175,11 @@ Toon nu enkele belangrijke kolommen (maar niet allemaal) en voorzie de
 kolomnamen van een Nederlandse vertaling. Zorg dat zowel Belgische als
 Nederlandse klanten zichtbaar zijn.
 
-Zie [sql/oef04/02b.sql]().
+Zie [sql/oef04/02b.sql](sql/oef04/02b.sql).
 
 ## Oefening 04.03: Alle artiesten die beginnen met de letter C
 
-Zie [sql/oef04/03.sql]().
+Zie [sql/oef04/03.sql](sql/oef04/03.sql).
 
 ## Oefening 04.04: Alle albums die een getal in hun titel hebben
 
@@ -187,11 +187,11 @@ Denk eraan dat het getal dat voorkomt in de titel een onderdeel v.d. tekst is.
 We kunnen dus niet zomaar wiskundige operaties gaan uitvoeren en moeten de
 getallen eigenlijk als *karakters* beschouwen.
 
-Zie [sql/oef04/04.sql]().
+Zie [sql/oef04/04.sql](sql/oef04/04.sql).
 
 ## Oefening 04.05: Alle albums die uit meer dan 1 CD bestaan
 
-Zie [sql/oef04/05.sql]().
+Zie [sql/oef04/05.sql](sql/oef04/05.sql).
 
 We kunnen dit proberen te bekomen door in de titel te zoeken naar bepaalde
 woorden die voorkomen maar helemaal waterdicht is deze query natuurlijk niet!
