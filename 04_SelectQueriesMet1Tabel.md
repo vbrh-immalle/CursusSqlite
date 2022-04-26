@@ -9,6 +9,9 @@
   - [Oefening 04.03: Alle artiesten die beginnen met de letter C](#oefening-0403-alle-artiesten-die-beginnen-met-de-letter-c)
   - [Oefening 04.04: Alle albums die een getal in hun titel hebben](#oefening-0404-alle-albums-die-een-getal-in-hun-titel-hebben)
   - [Oefening 04.05: Alle albums die uit meer dan 1 CD bestaan](#oefening-0405-alle-albums-die-uit-meer-dan-1-cd-bestaan)
+  - [Oefening 04.06: Alle mediatypes van het type AAC](#oefening-0406-alle-mediatypes-van-het-type-aac)
+  - [Oefening 04.07: Alle facturen voor België](#oefening-0407-alle-facturen-voor-belgië)
+  - [Oefening 04.08: Alle werknemers die vóór 2004 zijn aangenomen](#oefening-0408-alle-werknemers-die-vóór-2004-zijn-aangenomen)
 
 # Hoofdstuk 04: Select-queries met 1 tabel
 
@@ -71,6 +74,19 @@ vergelijkingensexpressies gebruiken:
 > De `LIKE`-operator is een interessante operator waarbij we dankzij het
 > **jokerteken `%`** interessante zoekopdrachten voor `string`-/tekstkolommen kunnen
 > schrijven. 
+
+Soms is het gebruik van `BETWEEN` of `NOT BETWEEN` handig.
+B.v. een getal van 2 t.e.m. 8 kan je op volgende manieren schrijven:
+
+- `WHERE getal >= 2 AND getal <= 8`
+- `WHERE getal BETWEEN 2 AND 8`
+
+Een getal kleiner dan 2 of groter dan 9:
+
+- `WHERE getal < 2 OR getal > 9`
+- `WHERE getal NOT BETWEEN 2 AND 9`
+
+Probeer zelf met [sql/between.sql](sql/between.sql).
 
 ### Volgorde bepalen
 
@@ -196,3 +212,69 @@ Zie [sql/oef04/05.sql](sql/oef04/05.sql).
 We kunnen dit proberen te bekomen door in de titel te zoeken naar bepaalde
 woorden die voorkomen maar helemaal waterdicht is deze query natuurlijk niet!
 
+## Oefening 04.06: Alle mediatypes van het type AAC
+
+De downloadbare muziekbestanden in de Chinook-database zijn allen geëncodeerd
+met een bepaalde encoding. In de tabel `MediaTypes` worden alle gebruikte
+mediatypes opgesomd en in de tabel `Track` wordt in een kolom `MediaTypeId`
+aangeduidt welke encoding een bepaalde track heeft.
+
+Controleer eerst *alle* media-types en schrijf vervolgens de query om enkel
+diegenen te tonen die een variant van `AAC` te zijn.
+
+Zie [sql/oef04/06.sql](sql/oef04/06.sql).
+
+> AAC: Advanced Audio Coding (opvolger van MP3)
+> MPEG / MP3 / MP4: codec van de *Moving Pictures Expert Group*
+
+> Een (audio/video-)codec is een coder/decoder-algoritme dat muziek of video op
+> een bepaalde manier codeert, meestal met de bedoeling zodat het minder plaats
+> inneemt op schijf en dus ook minder bandbreedte vereist om te streamen.
+
+## Oefening 04.07: Alle facturen voor België
+
+Hoewel in de tabel `Customer` al het adres aanwezig is, wordt voor elke factuur
+(`Invoice`) toch ook nog apart het `BillingAddress` bijgehouden.
+
+Kijk b.v. naar klant 8:
+
+```
+SELECT *
+  FROM Customer
+ WHERE CustomerId = 8
+;
+```
+
+Toon nu alle facturen die bestemd zijn voor `Belgium`. (Je zal trouwens zien dat
+niet alle facturen van klant nummer 8 zijn.)
+
+Zie [sql/oef04/07.sql](sql/oef04/07.sql).
+
+## Oefening 04.08: Alle werknemers die vóór 2004 zijn aangenomen
+
+Controleer met `.schema Employee` het type van deze velden:
+
+- `BirthDate`
+- `HireDate`
+
+Je zal zien dat dit `DATETIME` is.
+
+Voor kolommen van dit type, kunnen we de `BETWEEN`-operator gebruiken. We moeten
+dus een voldoende kleine start-datum kiezen (b.v. `1900-01-01`).
+
+Beschouw datums steeds als tekst-strings (zo wordt het eigenlijk ook opgeslagen
+in SQLite) en gebruik dus single (`'`) of double (`"`) quotes, b.v.
+`'1900-01-01'` of `"1900-01-01"`.
+
+Laat nu enkele belangrijke velden zien van alle werknemers die zijn aangenomen
+voor 2004.
+
+Zie [sql/oef04/08.sql](sql/oef04/08.sql).
+
+> Datums en tijden zijn in SQLite maar beperkt ondersteund. Toch zijn er enkele
+> hulp-functies waar je al wel wat mee kan:
+> https://www.sqlite.org/lang_datefunc.html. 
+>
+> Andere databases zoals PostgreSQL hebben hiervoor veel uitgebreidere
+> mogelijkheden, zie b.v.
+> https://www.postgresql.org/docs/current/datatype-datetime.html
