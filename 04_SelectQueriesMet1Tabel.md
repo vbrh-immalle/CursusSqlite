@@ -164,27 +164,22 @@ Wanneer je de gegevens van alle tabellen even bekeken hebt, kan je dus vaststell
 
 ## Oefening 04.02: Alle klanten uit België
 
+Zie [sql/oef04/02.sql]().
+
 > TIP: Met `.schema Customer` kan je de naam v.d. velden achterhalen. Of je kan
 > natuurlijk gewoon `SELECT * FROM Customer LIMIT 10` doen als de output zo
 > ingesteld is dat ook de headers worden getoond. Controleer `.headers` of
 > gebruik gewoon `.mode box` en alles staat meteen duidelijk.
 
-```
-SELECT *
-  FROM Customer
- WHERE Country = "Belgium";
-```
-
 Toon nu enkele belangrijke kolommen (maar niet allemaal) en voorzie de
-kolomnamen van een Nederlandse vertaling.
+kolomnamen van een Nederlandse vertaling. Zorg dat zowel Belgische als
+Nederlandse klanten zichtbaar zijn.
+
+Zie [sql/oef04/02b.sql]().
 
 ## Oefening 04.03: Alle artiesten die beginnen met de letter C
 
-```
-SELECT *
-  FROM Artist
- WHERE Name LIKE 'C%';
-```
+Zie [sql/oef04/03.sql]().
 
 ## Oefening 04.04: Alle albums die een getal in hun titel hebben
 
@@ -192,29 +187,12 @@ Denk eraan dat het getal dat voorkomt in de titel een onderdeel v.d. tekst is.
 We kunnen dus niet zomaar wiskundige operaties gaan uitvoeren en moeten de
 getallen eigenlijk als *karakters* beschouwen.
 
-```
-SELECT *
-  FROM Album
- WHERE 
-         Title LIKE '%1%' OR
-         Title LIKE '%0%' OR
-         Title LIKE '%2%' OR
-         Title LIKE '%3%' OR
-         Title LIKE '%4%' OR
-         Title LIKE '%5%' OR
-         Title LIKE '%6%' OR
-         Title LIKE '%7%' OR
-         Title LIKE '%8%' OR
-         Title LIKE '%9%'; 
-```
+Zie [sql/oef04/04.sql]().
 
 ## Oefening 04.05: Alle albums die uit meer dan 1 CD bestaan
+
+Zie [sql/oef04/05.sql]().
 
 We kunnen dit proberen te bekomen door in de titel te zoeken naar bepaalde
 woorden die voorkomen maar helemaal waterdicht is deze query natuurlijk niet!
 
-```
-SELECT *
-  FROM Album
- WHERE Title LIKE '%Disc%' OR Title LIKE '%CD%';
-```

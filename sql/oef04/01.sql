@@ -1,0 +1,4 @@
+SELECT *
+  FROM Album
+ LIMIT 10
+;
