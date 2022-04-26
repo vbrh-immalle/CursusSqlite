@@ -12,6 +12,9 @@
   - [Oefening 04.06: Alle mediatypes van het type AAC](#oefening-0406-alle-mediatypes-van-het-type-aac)
   - [Oefening 04.07: Alle facturen voor België](#oefening-0407-alle-facturen-voor-belgië)
   - [Oefening 04.08: Alle werknemers die vóór 2004 zijn aangenomen](#oefening-0408-alle-werknemers-die-vóór-2004-zijn-aangenomen)
+  - [Oefening 04.09: Alle nummers die groter dan zijn 580 MB](#oefening-0409-alle-nummers-die-groter-dan-zijn-580-mb)
+  - [Oefening 04.10: Alle playlists waar NIET `Music` in de naam voorkomt](#oefening-0410-alle-playlists-waar-niet-music-in-de-naam-voorkomt)
+  - [Oefening 04.11: Een aantal PlaylistTrack's](#oefening-0411-een-aantal-playlisttracks)
 
 # Hoofdstuk 04: Select-queries met 1 tabel
 
@@ -278,3 +281,40 @@ Zie [sql/oef04/08.sql](sql/oef04/08.sql).
 > Andere databases zoals PostgreSQL hebben hiervoor veel uitgebreidere
 > mogelijkheden, zie b.v.
 > https://www.postgresql.org/docs/current/datatype-datetime.html
+
+
+## Oefening 04.09: Alle nummers die groter dan zijn 580 MB
+
+Om grote getallen voor te stellen, kunnen we de `e`-notatie gebruiken.
+B.v. `580000000` is duidelijker leesbaar als `580e6`.
+
+> Gebruik:
+> - `e3` voor kilo
+> - `e6` voor mega
+> - `e9` voor giga
+> - `e12` voor tera
+> - ...
+
+Schrijf die query die alle nummers (`Track`) toont met een bestandsgrootte hoger
+dan 580 MB.
+
+Zie [sql/oef04/09.sql](sql/oef04/09.sql).
+
+> Denk aan het verschil tussen kilo en kibi, mega en mebi, ...
+> - MB: MEGA-byte (veelvoud van 10)
+> - MiB: MEBI-byte (veelvoud van 2) (b.v. 2 MiB: `2*1024*1024`)
+> - ...
+
+## Oefening 04.10: Alle playlists waar NIET `Music` in de naam voorkomt
+
+Zie [sql/oef04/10.sql](sql/oef04/10.sql).
+
+## Oefening 04.11: Een aantal PlaylistTrack's
+
+`PlaylistTrack` is een speciale tabel die eigenlijk een **veel-op-veel-relatie**
+voorstelt. Later meer hierover...
+
+Voor nu willen we een query die alle rijen toont waarvan het `PlaylistId`
+kleiner is dan 10 en tegelijkertijd het `TrackId` groter is dan 3500.
+
+Zie [sql/oef04/11.sql](sql/oef04/11.sql).
