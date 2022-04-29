@@ -8,6 +8,7 @@
     - [Go](#go)
   - [SQLite-prompt: `sqlite` interactief gebruiken](#sqlite-prompt-sqlite-interactief-gebruiken)
   - [Werken met Git en deze repository](#werken-met-git-en-deze-repository)
+  - [Conclusie](#conclusie)
 
 # Hoofdstuk 01: CLI-tools en prompts
 
@@ -328,3 +329,52 @@ commando's:
 Als je *vast* zit in een Git-repository (je begrijpt b.v. niet alle meldingen
 dit `git status` of `git pull` geven) kan je als **noodoplossing** steeds de
 lokale Git-repository verwijderen en opnieuw een repository van GitHub clonen.
+
+## Conclusie
+
+Elke serieuze IT'er zal vroeg of laat iets moeten doen in een terminal (CLI,
+console, ...). Het loont dus de moeite om de verschillende soorten user
+interfaces te onderscheiden. Traditioneel bestaan terminal-programma's al veel
+langer dan grafische applicaties dus het is niet verwonderlijk dat er van
+oudsher verschillende manieren om met terminal-programma's te werken tot op de
+dag van vandaag zijn overgebleven.
+
+Enkele tips:
+
+- roep commando's aan met verschillende stijlen van vlaggen (`-h`, `--help`, `-help`, ...)
+
+- commando's zijn eigenlijk vaak programma's die in het `PATH` staan
+ 
+> zorg dat `sqlite3.exe` overal beschikbaar is. Controleer waar het werkelijk
+  staat met `Get-Command sqlite3.exe`. Zie ook
+  https://github.com/vbrh-immalle/CursusPowershell/blob/master/04_Modules.md#de-kracht-van-get-command
+
+- bij interactive programma's met één invoerregel: experimenteer met de
+  mogelijkheden ervan zoals het *scrollen door de history* 
+
+> `readline` is een bekende term die hiervoor vaak gebruikt wordt. Het was
+> oorspronkelijk een oude UNIX-library die door vele programmeurs van
+>  CLI-programma's gebruikt wordt. Er zijn vele varianten van, zoals ook
+> `PSReadLine` in Powershell. Even zoeken en je vindt b.v.:
+> - https://github.com/PowerShell/PSReadLine voor Powershell (standaard al
+>   aanwezig, zie `Get-PSReadline`, zie ook
+>   https://github.com/vbrh-immalle/CursusPowershell/blob/master/03_ReadLine.md)
+> - https://github.com/antirez/linenoise een compacte variant geschreven in C
+> - https://github.com/tonerdo/readline in C#
+> - https://github.com/chzyer/readline in golang
+> - ...
+
+- sommige programma's hebben wat men soms een **TUI (Terminal User Interface)**
+  noemt. Hiermee bedoelt men meestal iets zoals een menu-systeem of specifieke
+  shortcuts en soms zelfs muis-ondersteuning.
+
+> Een traditionele library om TUI's te maken is **ncurses**
+> (https://en.wikipedia.org/wiki/Ncurses) maar uiteraard komen programmeurs nog
+> steeds graag met originele ideeën om TUI's te maken, zoals b.v.
+> https://github.com/charmbracelet/bubbletea waarmee
+> https://github.com/vbrh-immalle/elektrain gemaakt is.
+
+
+
+
+
