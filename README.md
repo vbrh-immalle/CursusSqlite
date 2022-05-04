@@ -98,3 +98,17 @@ Sommige mensen werken liever met een grafisch programma zoals
 https://sqlitebrowser.org/ om sqlite-databanken te exploreren. Dit programma is
 *niet* van de makers van de SQLite-library. Het is echter ook een prima tool om
 te werken met SQLite-databank-bestanden of om SQL-commando's te oefenen.
+
+## IRL gebruik van SQLite
+
+### Win10-notificaties
+
+Ga naar (gebruik je eigen USERNAME):
+
+```
+C:\Users\<USERNAME>\AppData\Local\Microsoft\Windows\Notifications
+``` 
+
+Maak een kopie van `wpndatabase.db`.
+
+Hierin worden (een aantal van) de meest recente Windows-notificaties bijgehouden.
